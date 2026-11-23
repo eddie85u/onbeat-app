@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onbeat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap">
+  <script>
+    // Use the saved light or dark choice before anything is drawn, so the page does not flash.
+    try {
+      var id = JSON.parse(localStorage.getItem('onbeat.current') || 'null') || (JSON.parse(localStorage.getItem('onbeat.profiles') || '[]')[0] || {}).id;
+      var theme = ((JSON.parse(localStorage.getItem('onbeat.v2:' + id) || '{}') || {}).settings || {}).theme;
+      if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+    } catch (e) { /* no saved choice */ }
+  </script>
+  <script type="module" crossorigin src="./assets/index-D-sqHQgn.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DYuZZEIN.css">
+</head>
+<body>
+  <div id="welcome" class="welcome" role="dialog" aria-modal="true" aria-label="Welcome to Onbeat" hidden></div>
+  <header class="top">
+    <h1>Onbeat</h1>
+    <nav id="nav" aria-label="Screens">
+      <button data-view="today">Today</button>
+      <button data-view="practice">Practice</button>
+      <button data-view="songs">Songs</button>
+      <button data-view="progress">Progress</button>
+    </nav>
+    <span id="kit" class="kit">Kit: not connected. Using the keyboard.</span>
+    <button id="profile-btn" class="profile-btn" aria-expanded="false" title="Profiles"></button>
+    <button id="settings-btn" aria-expanded="false">Settings</button>
+  </header>
+
+  <section id="profiles" class="settings" hidden>
+    <div class="page">
+      <div class="settings-grid">
+        <div>
+          <h3>Profiles</h3>
+          <p class="muted">Each profile keeps its own progress, history and settings on this computer.</p>
+          <div id="profile-list"></div>
+        </div>
+        <div>
+          <h3>Add someone</h3>
+          <form id="profile-add" class="row">
+            <input type="text" id="profile-name" maxlength="24" placeholder="Name" aria-label="Name for the new profile">
+            <button type="submit">Add and switch</button>
+          </form>
+          <p id="profile-note" class="muted" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="settings" class="settings" hidden>
+    <div class="page">
+      <div class="settings-grid">
+        <div>
+          <h3>Sound and picture</h3>
+          <label><input type="checkbox" id="sounds"> Drum sounds from the keyboard</label>
+          <label><input type="checkbox" id="showkit"> Show the kit picture</label>
+          <label>Theme <select id="theme">
+            <option value="auto">Match my computer</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select></label>
+          <h3 class="settings-sub">How you play</h3>
+          <label><input type="checkbox" id="follow"> Follow along without grading</label>
+          <p class="muted">For a practice pad or acoustic drums, with nothing plugged in. The staff, click and music play as usual; at the end of a run you say whether it was clean.</p>
+        </div>
+        <div>
+          <h3>Timing offset</h3>
+          <p class="muted">Cancels the constant delay between your hit and what the computer hears. Calibrate once for the keyboard and once for the kit.</p>
+          <label>Keyboard <input type="number" id="offset-kb" step="5" min="-250" max="250"> ms</label>
+          <label>Kit <input type="number" id="offset-kit" step="5" min="-250" max="250"> ms</label>
+          <div class="row"><button id="calibrate">Calibrate by tapping</button></div>
+          <p id="cal-status" class="muted" aria-live="polite"></p>
+        </div>
+        <div>
+          <h3>Kit layout</h3>
+          <div id="map-wizard"></div>
+        </div>
+        <div>
+          <h3>Placement</h3>
+          <p class="muted">Run the placement again to reset where you start on each path.</p>
+          <div class="row"><button id="redo-placement">Redo placement</button></div>
+        </div>
+        <div class="about">
+          <h3>About</h3>
+          <p><strong>Onbeat</strong> <span id="app-version" class="muted"></span></p>
+          <p>Built with love in Colombia, by Eddie Bello.</p>
+          <p id="other-version"></p>
+          <p class="muted">Drum notation drawn with VexFlow. Song charts come from the community of fans who write them; the app ships with none.</p>
+        </div>
+      </div>
+      <p id="data-note" class="muted data-note"></p>
+    </div>
+  </section>
+
+  <div id="leavebar" class="leavebar" role="alert" hidden>
+    <span>Your run is paused. Leave this screen and stop it?</span>
+    <div class="row">
+      <button id="leave-go">Leave and stop the run</button>
+      <button id="leave-stay" class="primary">Stay</button>
+    </div>
+  </div>
+
+  <div id="view-today" class="view" hidden></div>
+
+  <div id="view-practice" class="view layout" hidden>
+    <button id="list-btn" class="list-btn" aria-expanded="false">Browse exercises</button>
+    <nav id="list" class="list" aria-label="Exercises"></nav>
+    <main>
+      <button id="list-toggle" class="quiet list-toggle" aria-controls="list"></button>
+      <section id="sessionbar" class="sessionbar" hidden></section>
+      <section id="banner" class="banner" hidden></section>
+      <div class="head">
+        <p id="crumb" class="crumb"></p>
+        <h2 id="title"></h2>
+        <p id="hint"></p>
+        <ul id="lesson" class="lesson" hidden></ul>
+        <p id="videos" class="videos" hidden></p>
+        <button id="lesson-toggle" class="linkish" aria-controls="lesson" hidden></button>
+      </div>
+      <div class="paper">
+        <div id="countin" class="countin" hidden></div>
+        <div id="loopbadge" class="loopbadge" hidden><span aria-live="polite"></span></div>
+        <div id="staff"></div>
+      </div>
+      <div class="controls">
+        <button id="start" class="primary" title="Enter key">Start</button>
+        <button id="listen">Listen</button>
+        <button id="pause" title="Esc key" hidden>Pause</button>
+        <div class="tempo">
+          <button id="slower" aria-label="Slower by 5">−</button>
+          <span><b id="bpm" role="button" tabindex="0" title="Click to type a tempo" aria-label="Tempo. Click to type one."></b> bpm</span>
+          <button id="faster" aria-label="Faster by 5">+</button>
+        </div>
+        <span id="rule" class="rule"></span>
+        <button id="aids-btn" class="quiet" aria-expanded="false">Practice aids</button>
+      </div>
+      <div id="songmusic" class="songmusic row" hidden></div>
+      <p id="keyhint" class="keyhint muted">Keys: Enter starts and stops. Esc pauses and carries on.</p>
+      <div id="aids" class="aids" hidden>
+        <div class="aid-group" role="group" aria-labelledby="aids-click-label">
+          <span id="aids-click-label" class="aid-label">Click</span>
+          <div class="aid-row">
+            <select id="click" aria-label="Click">
+              <option value="beat">on every beat</option>
+              <option value="sub">on every note slot</option>
+              <option value="gap">silent every other bar</option>
+              <option value="off">off after the count-in</option>
+            </select>
+            <label><input type="checkbox" id="count"> Show the count</label>
+          </div>
+        </div>
+        <div class="aid-group" role="group" aria-labelledby="aids-help-label">
+          <span id="aids-help-label" class="aid-label">Help while learning</span>
+          <div class="aid-row">
+            <label><input type="checkbox" id="guide"> Play the notes with me</label>
+            <button id="wait" title="No clock: the line waits on each note until you hit it">Wait for me</button>
+            <button id="climb" title="Short runs back to back, 5 bpm faster after each clean one">Tempo climb</button>
+          </div>
+        </div>
+        <div id="aids-more" class="aid-group" role="group" aria-labelledby="aids-more-label">
+          <span id="aids-more-label" class="aid-label">More like this</span>
+          <div class="aid-row">
+            <button id="vary" title="A fresh combination at the same level">New variation</button>
+          </div>
+        </div>
+      </div>
+      <div class="below">
+        <div>
+          <div id="kitview" class="kitview"></div>
+          <p class="kithint muted">Also on the keyboard: S or L open hi-hat, C hi-hat foot, B second kick. Hold Shift to play softly.</p>
+          <div id="ytplayer" class="ytplayer" hidden></div>
+          <div id="ytnudge" class="row ytnudge" hidden>
+            <span class="muted">Music against the click:</span>
+            <button id="yt-later" title="The music is coming in late: start the video further in">Music is late</button>
+            <button id="yt-earlier" title="The music is coming in early: start the video further back">Music is early</button>
+            <span id="yt-offset" class="muted"></span>
+          </div>
+        </div>
+        <div class="side">
+          <div id="meter" class="meterbox"></div>
+          <div id="live" class="live" aria-live="polite"></div>
+          <section id="report" class="report" hidden></section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="view-songs" class="view" hidden></div>
+  <div id="view-progress" class="view" hidden></div>
+  <div id="celebrate" class="celebrate" role="status" hidden></div>
+</body>
+</html>
