@@ -1,0 +1,83 @@
+<!doctype html>
+<!-- Apoya Onbeat: published next to the web app as support.html (see tools/publish.sh).
+     To change the QR, replace breb.jpg in this folder and publish again; the app links here. -->
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apoya Onbeat</title>
+  <meta name="description" content="Onbeat es gratis y sin anuncios. Si te ayuda a aprender batería, puedes apoyarlo con lo que quieras. Onbeat is free, with no ads: support it with any amount.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Onbeat">
+  <meta property="og:title" content="Apoya Onbeat · Support Onbeat">
+  <meta property="og:description" content="Onbeat es gratis y sin anuncios. Apóyalo con lo que quieras.">
+  <meta property="og:url" content="https://eddie85u.github.io/onbeat-app/support.html">
+  <meta property="og:image" content="https://eddie85u.github.io/onbeat-app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#121514">
+  <style>
+    /* The heading font, served from this site rather than Google (Barlow Condensed, SIL Open Font License). */
+    @font-face { font-family: "Barlow Condensed"; font-weight: 800; font-display: swap; src: url(barlow-condensed-800.woff2) format("woff2"); }
+    :root { color-scheme: dark; --bg: #121514; --surface: #1b1f1e; --fg: #e7ebe9; --muted: #9aa49f; --line: #2e3532; --brass: #d9a441; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 560px; margin: 0 auto; padding: 32px 16px 48px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font: 800 28px/1 "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .01em; color: var(--fg); text-decoration: none; }
+    .mark { width: 28px; height: 28px; }
+    h1 { font: 800 34px/1.05 "Barlow Condensed", sans-serif; text-transform: uppercase; margin: 28px 0 8px; }
+    h2 { font-size: 17px; margin: 28px 0 6px; }
+    .card h2 { margin-top: 0; }
+    p { margin: 8px 0; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin-top: 20px; }
+    .key { font-weight: 700; word-break: break-all; }
+    .qr { display: block; width: 220px; max-width: 100%; height: auto; margin: 16px 0 4px; border-radius: 14px; }
+    .lang { float: right; font-size: 14px; color: var(--muted); }
+    .lang a { color: var(--brass); }
+    a { color: var(--brass); }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0 8px; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="brand" href="./"><svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#f4f2ec"/><path d="M5 9h18M5 14h18M5 19h18" stroke="#9aa19d" stroke-width="1.4"/><ellipse cx="10.5" cy="16.5" rx="3.4" ry="2.5" transform="rotate(-20 10.5 16.5)" fill="#1b1f1e"/><path d="M13.6 16V6.5" stroke="#1b1f1e" stroke-width="1.6"/><path d="M19 4v20" stroke="#b07a12" stroke-width="2.4" stroke-linecap="round"/></svg>Onbeat</a>
+    <span class="lang"><a href="#english">English below</a></span>
+
+    <h1>Apoya Onbeat</h1>
+    <p>Onbeat es gratis, sin anuncios y sin versión paga. Si te está ayudando a aprender batería y quieres dar las gracias, puedes enviar el valor que quieras.</p>
+    <div class="card">
+      <h2>Desde Colombia, en pesos (Bre-B)</h2>
+      <p>Llave: <span class="key">eddie85@gmail.com</span></p>
+      <p class="muted">En la app de tu banco o billetera, elige Bre-B, escribe la llave o escanea el código. Sin costo.</p>
+      <img class="qr" fetchpriority="high" src="breb.jpg" alt="Código QR de Bre-B para la llave eddie85@gmail.com" width="220" height="392">
+    </div>
+    <div class="card">
+      <h2>Tu perfil en la nube</h2>
+      <p>Si donas <b>US$10 (40.000 pesos) o más</b>, te enviamos un código que desbloquea un perfil en la nube: tu progreso y tu configuración quedan guardados en línea y al día en hasta 3 dispositivos a la vez. Practicas en el televisor y sigues en el celular o en el Mac, sin perder nada. Escribe a <a href="mailto:eddie@strategyandstack.com">eddie@strategyandstack.com</a> con los datos de tu transferencia y te respondemos con el código.</p>
+      <p class="muted">Onbeat sigue siendo gratis y puedes donar lo que quieras: sin el código, tu progreso se queda en cada dispositivo. Cada código es para un perfil, en hasta 3 dispositivos a la vez. Guarda el código: con él vuelves a entrar desde un dispositivo nuevo.</p>
+    </div>
+    <p class="muted">Pronto, tarjetas y otras monedas. Contarle a un amigo que esté aprendiendo batería también ayuda un montón.</p>
+    <p class="muted">Hecho en Colombia con amor, por <a href="https://strategyandstack.com/">Eddie Bello</a>. También en <a href="https://www.linkedin.com/in/eddiebello/">LinkedIn</a> e <a href="https://www.instagram.com/eddie85u/">Instagram</a>.</p>
+
+    <hr>
+    <h1 id="english">Support Onbeat</h1>
+    <p>Onbeat is free, with no ads and no paid version. If it is helping you learn the drums and you want to say thanks, you can send any amount.</p>
+    <div class="card">
+      <h2>From Colombia, in pesos (Bre-B)</h2>
+      <p>Key: <span class="key">eddie85@gmail.com</span></p>
+      <p class="muted">In your bank or wallet app, choose Bre-B, enter the key or scan the code above. No fee.</p>
+    </div>
+    <div class="card">
+      <h2>Your profile in the cloud</h2>
+      <p>Donate <b>US$10 (40,000 pesos) or more</b> and you get a code that unlocks one cloud profile: your progress and settings are saved online and stay in step on up to 3 devices at a time. Practise on the TV and carry on from the phone or the Mac, losing nothing. Write to <a href="mailto:eddie@strategyandstack.com">eddie@strategyandstack.com</a> with your transfer details and you'll get the code back.</p>
+      <p class="muted">Onbeat stays free and any donation is welcome: without a code, your progress stays on each device. Each code is for one profile, on up to 3 devices at a time. Keep the code: it gets you back in on a new device.</p>
+    </div>
+    <p class="muted">Cards and other currencies are coming soon. Telling a friend who is learning the drums helps just as much.</p>
+    <p class="muted">Made in Colombia with love, by <a href="https://strategyandstack.com/">Eddie Bello</a>. Also on <a href="https://www.linkedin.com/in/eddiebello/">LinkedIn</a> and <a href="https://www.instagram.com/eddie85u/">Instagram</a>. <a href="./">Back to Onbeat</a></p>
+  </main>
+</body>
+</html>
