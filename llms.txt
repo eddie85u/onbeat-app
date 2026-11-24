@@ -1,0 +1,19 @@
+# Onbeat
+
+> Onbeat is a free drum practice app, in English and Spanish, made in Colombia by Eddie Bello. It runs in the browser (Google Chrome) and as a Mac app.
+
+A staff with a moving line shows what to play while Onbeat keeps time and plays the drums along. You can practise on a practice pad or acoustic drums (you say whether each run was clean), on the computer keyboard, or on an electronic drum kit plugged in over USB (every hit is checked for timing, the right drum, and loud or soft). Lessons come in sixteen paths from first steps to advanced, including Reading, Time and rhythm, Hands and rudiments, Grooves, Fills, Hi-hat, Independence, Latin, Funk and pop, Double kick, Odd time and Jazz basics, with eight milestones along the way. Grooves have Easier and Harder steps that change one thing at a time. It works on a TV, phone or computer; on a pad, any modern browser will do.
+
+Onbeat is free, with no ads, no accounts and no tracking. Progress stays on the device. Playing along to songs is only in the Mac app, and Onbeat ships with no songs: people add drum charts made by fans for Clone Hero or YARG. Donations are voluntary and any amount is welcome; a donation of US$10 (40,000 Colombian pesos) or more gets a code that unlocks one cloud profile, saved online and kept in step on up to 3 devices (TV, phone, Mac). There is no Windows app yet; the web version works in Chrome on Windows.
+
+## Pages
+
+- [Onbeat, in English](https://eddie85u.github.io/onbeat-app/): what it does, how to get it, and questions
+- [Onbeat, en español](https://eddie85u.github.io/onbeat-app/es/): the same page in Spanish (Colombia)
+- [Open the web app](https://eddie85u.github.io/onbeat-app/app/): the app itself, in Chrome
+- [Downloads](https://github.com/eddie85u/onbeat-app/releases/latest): the Mac app (Apple silicon) and what changed in each version
+- [Support Onbeat](https://eddie85u.github.io/onbeat-app/support.html): donating by Bre-B from Colombia, and how supporters get a cloud-profile code
+
+## Optional
+
+- [Eddie Bello](https://strategyandstack.com/): who made it
