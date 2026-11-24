@@ -1,0 +1,638 @@
+<!doctype html>
+<!-- La página de inicio de Onbeat en español, publicada en https://eddie85u.github.io/onbeat-app/es/.
+     HECHA por tools/build-landing.mjs desde docs/design/ab/page.es.html: cambia ese archivo y corre el script, no este.
+     La versión en inglés es ../index.html: cambia las dos juntas (app/src/site.test.ts revisa que coincidan).
+     Las palabras de batería siguen docs/GLOSARIO.md. -->
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Old addresses of the app (bookmarks like #practice, and the sync service's QR links #link=XXXX-XXXX)
+    // go straight to the app, before anything is drawn.
+    (function () {
+      var h = location.hash;
+      if (/^#(today|practice|progress|songs|link=.+)$/i.test(h)) location.replace('/onbeat-app/app/' + h);
+    })();
+  </script>
+  <title>Aprende batería gratis, a tu ritmo | Onbeat</title>
+  <meta name="description" content="Clases de batería gratis, desde cero. Lee la partitura y toca en un pad, el teclado o una batería electrónica, desde tu celular. Sin cuenta ni anuncios.">
+  <link rel="canonical" href="https://eddie85u.github.io/onbeat-app/es/">
+  <link rel="alternate" hreflang="en" href="https://eddie85u.github.io/onbeat-app/">
+  <link rel="alternate" hreflang="es" href="https://eddie85u.github.io/onbeat-app/es/">
+  <link rel="alternate" hreflang="x-default" href="https://eddie85u.github.io/onbeat-app/">
+  <meta name="theme-color" content="#121514">
+  <link rel="icon" href="/onbeat-app/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="/onbeat-app/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/onbeat-app/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Onbeat">
+  <meta property="og:url" content="https://eddie85u.github.io/onbeat-app/es/">
+  <meta property="og:title" content="Aprende batería gratis, un tiempo a la vez">
+  <meta property="og:description" content="Lecciones de batería gratis en un pad, el teclado o una batería electrónica, en tu televisor, celular o computador. En español e inglés.">
+  <meta property="og:image" content="https://eddie85u.github.io/onbeat-app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="El logo de Onbeat: aprende batería, un tiempo a la vez">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/onbeat-app/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/onbeat-app/site.css">
+  <script src="/onbeat-app/site.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://eddie85u.github.io/onbeat-app/#eddie",
+        "name": "Eddie Bello",
+        "url": "https://strategyandstack.com/",
+        "sameAs": ["https://www.linkedin.com/in/eddiebello/", "https://www.instagram.com/eddie85u/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://eddie85u.github.io/onbeat-app/#website",
+        "name": "Onbeat",
+        "url": "https://eddie85u.github.io/onbeat-app/",
+        "inLanguage": ["en", "es"],
+        "publisher": { "@id": "https://eddie85u.github.io/onbeat-app/#eddie" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://eddie85u.github.io/onbeat-app/es/#webpage",
+        "url": "https://eddie85u.github.io/onbeat-app/es/",
+        "name": "Aprende batería gratis, a tu ritmo",
+        "inLanguage": "es-CO",
+        "isPartOf": { "@id": "https://eddie85u.github.io/onbeat-app/#website" },
+        "about": { "@id": "https://eddie85u.github.io/onbeat-app/#app" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://eddie85u.github.io/onbeat-app/#app",
+        "name": "Onbeat",
+        "description": "Práctica y lecciones de batería: un pentagrama con una línea que avanza muestra qué tocar, en un pad de práctica, el teclado del computador o una batería electrónica. Dieciséis rutas, de los primeros pasos al nivel avanzado.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "macOS (Apple silicon), Windows 10 y 11 (64 bits), navegador web",
+        "url": "https://eddie85u.github.io/onbeat-app/app/",
+        "downloadUrl": "https://github.com/eddie85u/onbeat-app/releases/latest",
+        "image": "https://eddie85u.github.io/onbeat-app/og.png",
+        "inLanguage": ["en", "es"],
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://eddie85u.github.io/onbeat-app/#eddie" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://eddie85u.github.io/onbeat-app/es/#faq",
+        "inLanguage": "es-CO",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿Es gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Es gratis, sin anuncios y sin versión paga. Las donaciones son voluntarias; US$10 (40.000 pesos) o más desbloquea un perfil en la nube, sincronizado en hasta 3 dispositivos a la vez." } },
+          { "@type": "Question", "name": "¿Sirve para empezar desde cero?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Las lecciones empiezan desde cero: la primera es el redoblante y la negra, y cada lección suma una sola cosa. No hay profesor ni cuenta; vas a tu propio ritmo." } },
+          { "@type": "Question", "name": "¿Necesito saber leer música?", "acceptedAnswer": { "@type": "Answer", "text": "No. La app te enseña a leer partitura de batería mientras tocas: cada línea o espacio es un tambor, una cruz es un platillo y una línea que avanza muestra dónde vas." } },
+          { "@type": "Question", "name": "¿Puedo aprender a tocar batería sin una batería?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Puedes practicar en un pad de práctica, en una batería acústica o en el teclado del computador. Una batería electrónica conectada por USB además revisa cada golpe." } },
+          { "@type": "Question", "name": "Ya toco. ¿Por dónde empiezo?", "acceptedAnswer": { "@type": "Answer", "text": "Elige \"Ya he tocado\" cuando abra la app. Con el teclado o una batería electrónica, una prueba de nivel de unos cinco minutos encuentra tu nivel en cada ruta. En un pad de práctica eliges tu punto de partida en el mapa." } },
+          { "@type": "Question", "name": "¿Qué estilos puedo aprender?", "acceptedAnswer": { "@type": "Answer", "text": "Rock, metal, pop y funk, latino y jazz básico. La ruta latina empieza con ritmos colombianos: cumbia, vallenato y dembow. Eliges un estilo, varios o el instrumento en sí, y puedes cambiarlo cuando quieras en Configuración." } },
+          { "@type": "Question", "name": "¿Me oye en un pad de práctica?", "acceptedAnswer": { "@type": "Answer", "text": "No. En un pad o una batería acústica la app no te oye: toca el ejercicio contigo y tú dices si cada pasada salió limpia. Con el teclado o una batería electrónica revisa cada golpe: a tiempo, el tambor correcto, fuerte o suave." } },
+          { "@type": "Question", "name": "¿Qué navegador necesito?", "acceptedAnswer": { "@type": "Answer", "text": "En un computador, Google Chrome en Mac o Windows: es el navegador que se conecta con una batería electrónica. Para un pad de práctica también sirve el navegador del celular, la tableta o el televisor." } },
+          { "@type": "Question", "name": "¿Funciona en mi televisor?", "acceptedAnswer": { "@type": "Answer", "text": "Si tu televisor tiene navegador, sí, para practicar en un pad. La app tiene una vista para pantallas grandes, un protector de pantalla cuando no está sonando nada y un ajuste de Imagen por si la línea que avanza se adelanta al sonido." } },
+          { "@type": "Question", "name": "¿Está en español?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. La app y esta página están en español (Colombia) e inglés. Cambia con EN | ES arriba cuando quieras." } },
+          { "@type": "Question", "name": "¿Dónde están las canciones?", "acceptedAnswer": { "@type": "Answer", "text": "Tocar con canciones es en la app de escritorio, para Mac o Windows. La app no trae canciones: tú agregas la partitura de batería de una canción, hecha por fans para Clone Hero o YARG, y su audio si lo tienes." } },
+          { "@type": "Question", "name": "¿Cómo abro la app para Mac la primera vez?", "acceptedAnswer": { "@type": "Answer", "text": "Descarga Onbeat-mac.zip, ábrelo y arrastra la app a Aplicaciones. La primera vez, macOS dice que no puede verificar la app, porque no viene de la App Store: oprime Aceptar y luego, en Ajustes del Sistema &gt; Privacidad y seguridad, oprime Abrir de todos modos junto al mensaje sobre la app." } },
+          { "@type": "Question", "name": "¿Hay app para Windows?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, para Windows 10 u 11 (64 bits), con canciones y copia de seguridad diaria como la app para Mac. Descárgala en Empieza a practicar." } },
+          { "@type": "Question", "name": "¿Cómo abro la app para Windows la primera vez?", "acceptedAnswer": { "@type": "Answer", "text": "Descarga Onbeat-windows.zip, haz clic derecho, elige Extraer todo y abre Onbeat.exe en la carpeta extraída. La primera vez, Windows dice que protegió tu PC, porque la app no viene de Microsoft Store: oprime Más información y luego Ejecutar de todas formas. Lo pregunta solo una vez." } },
+          { "@type": "Question", "name": "¿Dónde se guarda mi progreso?", "acceptedAnswer": { "@type": "Answer", "text": "En tu dispositivo: en el navegador en la versión web, y en la app en un computador Mac o Windows. En Configuración, la copia de seguridad lo guarda en un archivo que puedes pasar a otro computador. Varias personas pueden compartir un dispositivo, cada una con su propio perfil." } },
+          { "@type": "Question", "name": "¿Cómo consigo el perfil en la nube?", "acceptedAnswer": { "@type": "Answer", "text": "Dona US$10 (40.000 pesos) o más y escribe a eddie@strategyandstack.com con los datos de tu transferencia. Recibes un código para escribir en Configuración &gt; Sincronizar, y luego vinculas tus otros dispositivos con un código QR. Guarda el código: con él vuelves a entrar desde un dispositivo nuevo. Solo el progreso y los ajustes de ese perfil se guardan en línea, sin nombres ni correos." } },
+          { "@type": "Question", "name": "¿Algo no funciona, o tienes una idea?", "acceptedAnswer": { "@type": "Answer", "text": "Cuéntanos en GitHub, o escribe a eddie@strategyandstack.com. Di qué estabas haciendo y en qué dispositivo; una captura de pantalla ayuda." } },
+          { "@type": "Question", "name": "¿Quién la hace?", "acceptedAnswer": { "@type": "Answer", "text": "Eddie Bello, en Colombia, también aprendiendo batería." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/onbeat-app/"><svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#f4f2ec"/><path d="M5 9h18M5 14h18M5 19h18" stroke="#9aa19d" stroke-width="1.4"/><ellipse cx="10.5" cy="16.5" rx="3.4" ry="2.5" transform="rotate(-20 10.5 16.5)" fill="#1b1f1e"/><path d="M13.6 16V6.5" stroke="#1b1f1e" stroke-width="1.6"/><path d="M19 4v20" stroke="#b07a12" stroke-width="2.4" stroke-linecap="round"/></svg>Onbeat</a>
+    <nav class="links" aria-label="En esta página">
+      <a href="#for">Para quién es</a>
+      <a href="#journey">El recorrido</a>
+      <a href="#screens">Pantallas</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <nav class="nav" aria-label="Principal">
+      <a class="btn dl" href="#get">Descargar</a>
+      <a class="btn primary" href="/onbeat-app/app/"><span class="long">Versión&nbsp;web</span><span class="short">Web</span></a>
+      <span class="lang" role="group" aria-label="Idioma">
+        <a href="/onbeat-app/" lang="en" hreflang="en" title="English">EN</a>
+        <span aria-current="true" lang="es">ES</span>
+      </span>
+    </nav>
+  </div>
+  <i class="top-line" aria-hidden="true"></i>
+</header>
+
+<main id="main">
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-head">
+        <p class="eyebrow">Un tiempo a la vez</p>
+        <h1 class="settle">Aprende a tocar batería,<br> a tu ritmo</h1>
+      </div>
+      <div class="hero-copy">
+        <p class="lead" style="--d:1">Clases de batería desde cero, en un pad, el teclado o una batería electrónica. Una línea te muestra qué tocar y toca contigo.</p>
+        <div class="cta" style="--d:2">
+          <a class="btn primary big" href="/onbeat-app/app/">Abrir versión web</a>
+          <a class="btn big" href="#get">Descargar la app</a>
+        </div>
+        <ul class="facts" style="--d:3">
+          <li>Gratis, sin anuncios</li>
+          <li>Sin cuenta</li>
+          <li>Español e inglés</li>
+        </ul>
+      </div>
+      <!-- A piece of the app, playing: the notation is drawn by the app's own notation library (tools/make-staff.cjs),
+           site.js moves the line, the sticks and the sound on one clock. REEL 1 can sit beside it later. -->
+      <div class="live-wrap">
+        <div class="live" id="live" data-reel="pad-on-tv">
+          <div class="live-head">
+            <div class="live-title"><small>Fills · pruébalo</small><b>Un ritmo y un fill por los toms</b></div>
+            <div class="live-meta"><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="bpm"><b>96</b>bpm</span></div>
+          </div>
+          <div class="sheet" id="sheet">
+            <div class="pan" id="pan" role="img" aria-label="Dos compases de partitura de batería: un ritmo de rock y luego un fill por los toms en semicorcheas."><svg class="staff" aria-hidden="true" stroke-width="0.3" stroke-dasharray="none" fill="black" stroke="black" font-family="Arial, sans-serif" font-size="10pt" font-weight="normal" font-style="normal" viewBox="0 0 1000 190"><g class="vf-stave" stroke-width="1" fill="#999999" stroke="#999999"><path fill="none" d="M10 70L509.363 70"></path><path fill="none" d="M10 80L509.363 80"></path><path fill="none" d="M10 90L509.363 90"></path><path fill="none" d="M10 100L509.363 100"></path><path fill="none" d="M10 110L509.363 110"></path></g><g class="vf-stavebarline"><rect x="10" y="69.5" width="1" height="41" stroke="none"></rect></g><g class="vf-stavebarline"><rect x="509.363" y="69.5" width="1" height="41" stroke="none"></rect></g><g class="vf-clef"><path stroke="none" d="M21.458 99.491L21.458 80.509C21.458 80.172,21.234 79.891,20.897 79.891L15.562 79.891C15.253 79.891,15 80.172,15 80.509L15 99.491C15 99.828,15.253 100.109,15.562 100.109L20.897 100.109C21.234 100.109,21.458 99.828,21.458 99.491M30.444 80.509C30.444 80.172,30.191 79.891,29.882 79.891L24.547 79.891C24.21 79.891,23.986 80.172,23.986 80.509L23.986 99.491C23.986 99.828,24.21 100.109,24.547 100.109L29.882 100.109C30.191 100.109,30.444 99.828,30.444 99.491"></path></g><g class="vf-timesignature"><path stroke="none" d="M60.074 83.005L60.074 74.328C60.074 74.019,60.046 73.654,59.596 73.654C59.231 73.654,59.035 73.738,58.782 74.019L54.935 78.652C54.795 78.877,54.57 79.101,54.57 79.607L54.57 83.005L49.122 83.005C52.352 80.253,58.838 71.071,58.95 70.565L58.979 70.453C58.979 70.088,58.698 69.863,58.389 69.863C58.024 69.863,56.367 69.919,55.637 69.919C54.907 69.919,53.082 69.863,52.773 69.863C52.408 69.863,51.846 69.975,51.846 70.621C51.846 75.62,47.859 81.264,46.651 82.948L46.427 83.285C46.427 83.285,46.427 83.313,46.427 83.313L46.371 83.37C46.286 83.566,46.258 83.707,46.258 83.847C46.258 84.24,46.567 84.521,47.073 84.521L54.57 84.521L54.57 87.076C54.57 88.171,53.7 88.48,52.969 88.48C52.324 88.48,52.043 88.845,52.043 89.266C52.043 89.66,52.183 90.109,52.801 90.109L61.422 90.109C61.815 90.109,62.236 89.828,62.236 89.266C62.236 88.705,61.73 88.452,61.337 88.452C60.944 88.452,60.074 88.199,60.074 86.908L60.074 84.521L63.022 84.521C63.443 84.521,63.64 84.24,63.64 83.763C63.64 83.285,63.471 83.005,63.022 83.005"></path><path stroke="none" d="M60.074 103.005L60.074 94.328C60.074 94.019,60.046 93.654,59.596 93.654C59.231 93.654,59.035 93.738,58.782 94.019L54.935 98.652C54.795 98.877,54.57 99.101,54.57 99.607L54.57 103.005L49.122 103.005C52.352 100.253,58.838 91.071,58.95 90.565L58.979 90.453C58.979 90.088,58.698 89.863,58.389 89.863C58.024 89.863,56.367 89.919,55.637 89.919C54.907 89.919,53.082 89.863,52.773 89.863C52.408 89.863,51.846 89.975,51.846 90.621C51.846 95.62,47.859 101.264,46.651 102.948L46.427 103.285C46.427 103.285,46.427 103.313,46.427 103.313L46.371 103.37C46.286 103.566,46.258 103.707,46.258 103.847C46.258 104.24,46.567 104.521,47.073 104.521L54.57 104.521L54.57 107.076C54.57 108.171,53.7 108.48,52.969 108.48C52.324 108.48,52.043 108.845,52.043 109.266C52.043 109.66,52.183 110.109,52.801 110.109L61.422 110.109C61.815 110.109,62.236 109.828,62.236 109.266C62.236 108.705,61.73 108.452,61.337 108.452C60.944 108.452,60.074 108.199,60.074 106.908L60.074 104.521L63.022 104.521C63.443 104.521,63.64 104.24,63.64 103.763C63.64 103.285,63.471 103.005,63.022 103.005"></path></g><g class="vf-stavenote" data-b="0"><g class="vf-notehead"><path stroke="none" d="M94.757 110.054C98.351 110.054,102.76 106.741,102.76 103.315C102.76 101.237,101.131 99.946,98.828 99.946C94.392 99.946,90.826 103.231,90.826 106.685C90.826 108.791,92.566 110.054,94.757 110.054"></path></g><g class="vf-notehead"><path stroke="none" d="M102.535 69.015L97.733 65L102.535 60.956C102.675 60.872,102.76 60.676,102.76 60.507C102.76 60.198,102.479 59.946,102.226 59.946C102.142 59.946,102.029 59.974,101.945 60.03L96.835 64.27L91.836 60.03C91.752 59.974,91.64 59.946,91.499 59.946C91.219 59.946,91.022 60.226,91.022 60.479C91.022 60.62,91.106 60.844,91.219 60.956L96.048 65L91.219 69.015C91.05 69.128,91.022 69.296,91.022 69.437C91.022 69.774,91.219 70.054,91.556 70.054C91.668 70.054,91.752 70.026,91.836 69.942L96.835 65.674L101.945 69.942C102.029 70.026,102.142 70.054,102.226 70.054C102.535 70.054,102.76 69.717,102.76 69.493C102.76 69.296,102.675 69.128,102.535 69.015"></path></g></g><g class="vf-stavenote" data-b="0.5"><g class="vf-notehead"><path stroke="none" d="M158.733 69.015L153.932 65L158.733 60.956C158.874 60.872,158.958 60.676,158.958 60.507C158.958 60.198,158.677 59.946,158.424 59.946C158.34 59.946,158.228 59.974,158.144 60.03L153.033 64.27L148.035 60.03C147.951 59.974,147.838 59.946,147.698 59.946C147.417 59.946,147.22 60.226,147.22 60.479C147.22 60.62,147.305 60.844,147.417 60.956L152.247 65L147.417 69.015C147.249 69.128,147.22 69.296,147.22 69.437C147.22 69.774,147.417 70.054,147.754 70.054C147.866 70.054,147.951 70.026,148.035 69.942L153.033 65.674L158.144 69.942C158.228 70.026,158.34 70.054,158.424 70.054C158.733 70.054,158.958 69.717,158.958 69.493C158.958 69.296,158.874 69.128,158.733 69.015"></path></g></g><g class="vf-stavenote" data-b="1"><g class="vf-notehead"><path stroke="none" d="M207.154 90.054C210.748 90.054,215.156 86.741,215.156 83.315C215.156 81.237,213.528 79.946,211.225 79.946C206.788 79.946,203.222 83.231,203.222 86.685C203.222 88.791,204.963 90.054,207.154 90.054"></path></g><g class="vf-notehead"><path stroke="none" d="M214.932 69.015L210.13 65L214.932 60.956C215.072 60.872,215.156 60.676,215.156 60.507C215.156 60.198,214.876 59.946,214.623 59.946C214.539 59.946,214.426 59.974,214.342 60.03L209.231 64.27L204.233 60.03C204.149 59.974,204.037 59.946,203.896 59.946C203.615 59.946,203.419 60.226,203.419 60.479C203.419 60.62,203.503 60.844,203.615 60.956L208.445 65L203.615 69.015C203.447 69.128,203.419 69.296,203.419 69.437C203.419 69.774,203.615 70.054,203.952 70.054C204.065 70.054,204.149 70.026,204.233 69.942L209.231 65.674L214.342 69.942C214.426 70.026,214.539 70.054,214.623 70.054C214.932 70.054,215.156 69.717,215.156 69.493C215.156 69.296,215.072 69.128,214.932 69.015"></path></g></g><g class="vf-stavenote" data-b="1.5"><g class="vf-notehead"><path stroke="none" d="M263.352 110.054C266.946 110.054,271.355 106.741,271.355 103.315C271.355 101.237,269.726 99.946,267.424 99.946C262.987 99.946,259.421 103.231,259.421 106.685C259.421 108.791,261.162 110.054,263.352 110.054"></path></g><g class="vf-notehead"><path stroke="none" d="M271.13 69.015L266.328 65L271.13 60.956C271.27 60.872,271.355 60.676,271.355 60.507C271.355 60.198,271.074 59.946,270.821 59.946C270.737 59.946,270.625 59.974,270.54 60.03L265.43 64.27L260.432 60.03C260.347 59.974,260.235 59.946,260.095 59.946C259.814 59.946,259.617 60.226,259.617 60.479C259.617 60.62,259.702 60.844,259.814 60.956L264.644 65L259.814 69.015C259.645 69.128,259.617 69.296,259.617 69.437C259.617 69.774,259.814 70.054,260.151 70.054C260.263 70.054,260.347 70.026,260.432 69.942L265.43 65.674L270.54 69.942C270.625 70.026,270.737 70.054,270.821 70.054C271.13 70.054,271.355 69.717,271.355 69.493C271.355 69.296,271.27 69.128,271.13 69.015"></path></g></g><g class="vf-stavenote" data-b="2"><g class="vf-notehead"><path stroke="none" d="M319.55 110.054C323.145 110.054,327.553 106.741,327.553 103.315C327.553 101.237,325.925 99.946,323.622 99.946C319.185 99.946,315.619 103.231,315.619 106.685C315.619 108.791,317.36 110.054,319.55 110.054"></path></g><g class="vf-notehead"><path stroke="none" d="M327.329 69.015L322.527 65L327.329 60.956C327.469 60.872,327.553 60.676,327.553 60.507C327.553 60.198,327.272 59.946,327.02 59.946C326.935 59.946,326.823 59.974,326.739 60.03L321.628 64.27L316.63 60.03C316.546 59.974,316.433 59.946,316.293 59.946C316.012 59.946,315.816 60.226,315.816 60.479C315.816 60.62,315.9 60.844,316.012 60.956L320.842 65L316.012 69.015C315.844 69.128,315.816 69.296,315.816 69.437C315.816 69.774,316.012 70.054,316.349 70.054C316.462 70.054,316.546 70.026,316.63 69.942L321.628 65.674L326.739 69.942C326.823 70.026,326.935 70.054,327.02 70.054C327.329 70.054,327.553 69.717,327.553 69.493C327.553 69.296,327.469 69.128,327.329 69.015"></path></g></g><g class="vf-stavenote" data-b="2.5"><g class="vf-notehead"><path stroke="none" d="M383.527 69.015L378.725 65L383.527 60.956C383.667 60.872,383.752 60.676,383.752 60.507C383.752 60.198,383.471 59.946,383.218 59.946C383.134 59.946,383.021 59.974,382.937 60.03L377.827 64.27L372.828 60.03C372.744 59.974,372.632 59.946,372.491 59.946C372.211 59.946,372.014 60.226,372.014 60.479C372.014 60.62,372.098 60.844,372.211 60.956L377.04 65L372.211 69.015C372.042 69.128,372.014 69.296,372.014 69.437C372.014 69.774,372.211 70.054,372.548 70.054C372.66 70.054,372.744 70.026,372.828 69.942L377.827 65.674L382.937 69.942C383.021 70.026,383.134 70.054,383.218 70.054C383.527 70.054,383.752 69.717,383.752 69.493C383.752 69.296,383.667 69.128,383.527 69.015"></path></g></g><g class="vf-stavenote" data-b="3"><g class="vf-notehead"><path stroke="none" d="M431.947 90.054C435.541 90.054,439.95 86.741,439.95 83.315C439.95 81.237,438.321 79.946,436.019 79.946C431.582 79.946,428.016 83.231,428.016 86.685C428.016 88.791,429.757 90.054,431.947 90.054"></path></g><g class="vf-notehead"><path stroke="none" d="M439.725 69.015L434.924 65L439.725 60.956C439.866 60.872,439.95 60.676,439.95 60.507C439.95 60.198,439.669 59.946,439.416 59.946C439.332 59.946,439.22 59.974,439.136 60.03L434.025 64.27L429.027 60.03C428.943 59.974,428.83 59.946,428.69 59.946C428.409 59.946,428.213 60.226,428.213 60.479C428.213 60.62,428.297 60.844,428.409 60.956L433.239 65L428.409 69.015C428.241 69.128,428.213 69.296,428.213 69.437C428.213 69.774,428.409 70.054,428.746 70.054C428.858 70.054,428.943 70.026,429.027 69.942L434.025 65.674L439.136 69.942C439.22 70.026,439.332 70.054,439.416 70.054C439.725 70.054,439.95 69.717,439.95 69.493C439.95 69.296,439.866 69.128,439.725 69.015"></path></g></g><g class="vf-stavenote" data-b="3.5"><g class="vf-notehead"><path stroke="none" d="M495.924 69.015L491.122 65L495.924 60.956C496.064 60.872,496.148 60.676,496.148 60.507C496.148 60.198,495.868 59.946,495.615 59.946C495.531 59.946,495.418 59.974,495.334 60.03L490.223 64.27L485.225 60.03C485.141 59.974,485.029 59.946,484.888 59.946C484.607 59.946,484.411 60.226,484.411 60.479C484.411 60.62,484.495 60.844,484.607 60.956L489.437 65L484.607 69.015C484.439 69.128,484.411 69.296,484.411 69.437C484.411 69.774,484.607 70.054,484.944 70.054C485.057 70.054,485.141 70.026,485.225 69.942L490.223 65.674L495.334 69.942C495.418 70.026,495.531 70.054,495.615 70.054C495.924 70.054,496.148 69.717,496.148 69.493C496.148 69.296,496.064 69.128,495.924 69.015"></path></g></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M102.01 103L102.01 30.75"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M158.208 61L158.208 30.75"></path></g><g class="vf-beam"><path stroke="none" d="M101.26 30L101.26 35L158.458 35L158.458 30Z"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M214.406 83L214.406 30.75"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M270.605 103L270.605 30.75"></path></g><g class="vf-beam"><path stroke="none" d="M213.656 30L213.656 35L270.855 35L270.855 30Z"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M326.803 103L326.803 30.75"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M383.002 61L383.002 30.75"></path></g><g class="vf-beam"><path stroke="none" d="M326.053 30L326.053 35L383.252 35L383.252 30Z"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M439.2 83L439.2 30.75"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M495.398 61L495.398 30.75"></path></g><g class="vf-beam"><path stroke="none" d="M438.45 30L438.45 35L495.648 35L495.648 30Z"></path></g><g class="vf-stave" stroke-width="1" fill="#999999" stroke="#999999"><path fill="none" d="M509.363 70L982 70"></path><path fill="none" d="M509.363 80L982 80"></path><path fill="none" d="M509.363 90L982 90"></path><path fill="none" d="M509.363 100L982 100"></path><path fill="none" d="M509.363 110L982 110"></path></g><g class="vf-stavebarline"><rect x="509.363" y="69.5" width="1" height="41" stroke="none"></rect></g><g class="vf-stavebarline"><rect x="982" y="69.5" width="1" height="41" stroke="none"></rect></g><g class="vf-stavenote" data-b="4"><g class="vf-notehead"><path stroke="none" d="M544.344 110.054C547.938 110.054,552.347 106.741,552.347 103.315C552.347 101.237,550.718 99.946,548.416 99.946C543.979 99.946,540.413 103.231,540.413 106.685C540.413 108.791,542.154 110.054,544.344 110.054"></path></g><g class="vf-notehead"><path stroke="none" d="M552.122 69.015L547.32 65L552.122 60.956C552.263 60.872,552.347 60.676,552.347 60.507C552.347 60.198,552.066 59.946,551.813 59.946C551.729 59.946,551.617 59.974,551.532 60.03L546.422 64.27L541.424 60.03C541.339 59.974,541.227 59.946,541.087 59.946C540.806 59.946,540.609 60.226,540.609 60.479C540.609 60.62,540.694 60.844,540.806 60.956L545.636 65L540.806 69.015C540.637 69.128,540.609 69.296,540.609 69.437C540.609 69.774,540.806 70.054,541.143 70.054C541.255 70.054,541.339 70.026,541.424 69.942L546.422 65.674L551.532 69.942C551.617 70.026,551.729 70.054,551.813 70.054C552.122 70.054,552.347 69.717,552.347 69.493C552.347 69.296,552.263 69.128,552.122 69.015"></path></g></g><g class="vf-stavenote" data-b="4.5"><g class="vf-notehead"><path stroke="none" d="M608.321 69.015L603.519 65L608.321 60.956C608.461 60.872,608.545 60.676,608.545 60.507C608.545 60.198,608.264 59.946,608.012 59.946C607.927 59.946,607.815 59.974,607.731 60.03L602.62 64.27L597.622 60.03C597.538 59.974,597.425 59.946,597.285 59.946C597.004 59.946,596.808 60.226,596.808 60.479C596.808 60.62,596.892 60.844,597.004 60.956L601.834 65L597.004 69.015C596.836 69.128,596.808 69.296,596.808 69.437C596.808 69.774,597.004 70.054,597.341 70.054C597.454 70.054,597.538 70.026,597.622 69.942L602.62 65.674L607.731 69.942C607.815 70.026,607.927 70.054,608.012 70.054C608.321 70.054,608.545 69.717,608.545 69.493C608.545 69.296,608.461 69.128,608.321 69.015"></path></g></g><g class="vf-stavenote" data-b="5"><g class="vf-notehead"><path stroke="none" d="M656.741 90.054C660.335 90.054,664.744 86.741,664.744 83.315C664.744 81.237,663.115 79.946,660.812 79.946C656.376 79.946,652.81 83.231,652.81 86.685C652.81 88.791,654.551 90.054,656.741 90.054"></path></g><g class="vf-notehead"><path stroke="none" d="M664.519 69.015L659.717 65L664.519 60.956C664.659 60.872,664.744 60.676,664.744 60.507C664.744 60.198,664.463 59.946,664.21 59.946C664.126 59.946,664.013 59.974,663.929 60.03L658.819 64.27L653.82 60.03C653.736 59.974,653.624 59.946,653.483 59.946C653.203 59.946,653.006 60.226,653.006 60.479C653.006 60.62,653.09 60.844,653.203 60.956L658.032 65L653.203 69.015C653.034 69.128,653.006 69.296,653.006 69.437C653.006 69.774,653.203 70.054,653.54 70.054C653.652 70.054,653.736 70.026,653.82 69.942L658.819 65.674L663.929 69.942C664.013 70.026,664.126 70.054,664.21 70.054C664.519 70.054,664.744 69.717,664.744 69.493C664.744 69.296,664.659 69.128,664.519 69.015"></path></g></g><g class="vf-stavenote" data-b="5.5"><g class="vf-notehead"><path stroke="none" d="M712.939 110.054C716.533 110.054,720.942 106.741,720.942 103.315C720.942 101.237,719.313 99.946,717.011 99.946C712.574 99.946,709.008 103.231,709.008 106.685C709.008 108.791,710.749 110.054,712.939 110.054"></path></g><g class="vf-notehead"><path stroke="none" d="M720.717 69.015L715.916 65L720.717 60.956C720.858 60.872,720.942 60.676,720.942 60.507C720.942 60.198,720.661 59.946,720.408 59.946C720.324 59.946,720.212 59.974,720.128 60.03L715.017 64.27L710.019 60.03C709.935 59.974,709.822 59.946,709.682 59.946C709.401 59.946,709.205 60.226,709.205 60.479C709.205 60.62,709.289 60.844,709.401 60.956L714.231 65L709.401 69.015C709.233 69.128,709.205 69.296,709.205 69.437C709.205 69.774,709.401 70.054,709.738 70.054C709.85 70.054,709.935 70.026,710.019 69.942L715.017 65.674L720.128 69.942C720.212 70.026,720.324 70.054,720.408 70.054C720.717 70.054,720.942 69.717,720.942 69.493C720.942 69.296,720.858 69.128,720.717 69.015"></path></g></g><g class="vf-stavenote" data-b="6"><g class="vf-notehead"><path stroke="none" d="M769.138 110.054C772.732 110.054,777.14 106.741,777.14 103.315C777.14 101.237,775.512 99.946,773.209 99.946C768.773 99.946,765.206 103.231,765.206 106.685C765.206 108.791,766.947 110.054,769.138 110.054"></path><g class="vf-annotation"><text stroke="none" x="766.359" y="132.52">R</text></g></g><g class="vf-notehead"><path stroke="none" d="M769.138 90.054C772.732 90.054,777.14 86.741,777.14 83.315C777.14 81.237,775.512 79.946,773.209 79.946C768.773 79.946,765.206 83.231,765.206 86.685C765.206 88.791,766.947 90.054,769.138 90.054"></path></g></g><g class="vf-stavenote" data-b="6.25"><g class="vf-notehead"><path stroke="none" d="M797.237 90.054C800.831 90.054,805.24 86.741,805.24 83.315C805.24 81.237,803.611 79.946,801.308 79.946C796.872 79.946,793.306 83.231,793.306 86.685C793.306 88.791,795.047 90.054,797.237 90.054"></path><g class="vf-annotation"><text stroke="none" x="795.2" y="132.52">L</text></g></g></g><g class="vf-stavenote" data-b="6.5"><g class="vf-notehead"><path stroke="none" d="M825.336 80.054C828.93 80.054,833.339 76.741,833.339 73.315C833.339 71.237,831.71 69.946,829.408 69.946C824.971 69.946,821.405 73.231,821.405 76.685C821.405 78.791,823.146 80.054,825.336 80.054"></path><g class="vf-annotation"><text stroke="none" x="822.557" y="132.52">R</text></g></g></g><g class="vf-stavenote" data-b="6.75"><g class="vf-notehead"><path stroke="none" d="M853.435 80.054C857.029 80.054,861.438 76.741,861.438 73.315C861.438 71.237,859.809 69.946,857.507 69.946C853.07 69.946,849.504 73.231,849.504 76.685C849.504 78.791,851.245 80.054,853.435 80.054"></path><g class="vf-annotation"><text stroke="none" x="851.399" y="132.52">L</text></g></g></g><g class="vf-stavenote" data-b="7"><g class="vf-notehead"><path stroke="none" d="M881.534 110.054C885.129 110.054,889.537 106.741,889.537 103.315C889.537 101.237,887.909 99.946,885.606 99.946C881.169 99.946,877.603 103.231,877.603 106.685C877.603 108.791,879.344 110.054,881.534 110.054"></path><g class="vf-annotation"><text stroke="none" x="878.756" y="132.52">R</text></g></g><g class="vf-notehead"><path stroke="none" d="M881.534 85.054C885.129 85.054,889.537 81.741,889.537 78.315C889.537 76.237,887.909 74.946,885.606 74.946C881.169 74.946,877.603 78.231,877.603 81.685C877.603 83.791,879.344 85.054,881.534 85.054"></path></g></g><g class="vf-stavenote" data-b="7.25"><g class="vf-notehead"><path stroke="none" d="M909.634 85.054C913.228 85.054,917.636 81.741,917.636 78.315C917.636 76.237,916.008 74.946,913.705 74.946C909.269 74.946,905.702 78.231,905.702 81.685C905.702 83.791,907.443 85.054,909.634 85.054"></path><g class="vf-annotation"><text stroke="none" x="907.597" y="132.52">L</text></g></g></g><g class="vf-stavenote" data-b="7.5"><g class="vf-notehead"><path stroke="none" d="M937.733 100.054C941.327 100.054,945.736 96.741,945.736 93.315C945.736 91.237,944.107 89.946,941.804 89.946C937.368 89.946,933.802 93.231,933.802 96.685C933.802 98.791,935.543 100.054,937.733 100.054"></path><g class="vf-annotation"><text stroke="none" x="934.954" y="132.52">R</text></g></g></g><g class="vf-stavenote" data-b="7.75"><g class="vf-notehead"><path stroke="none" d="M965.832 100.054C969.426 100.054,973.835 96.741,973.835 93.315C973.835 91.237,972.206 89.946,969.904 89.946C965.467 89.946,961.901 93.231,961.901 96.685C961.901 98.791,963.642 100.054,965.832 100.054"></path><g class="vf-annotation"><text stroke="none" x="963.796" y="132.52">L</text></g></g></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M551.597 103L551.597 30.75"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M607.795 61L607.795 30.75"></path></g><g class="vf-beam"><path stroke="none" d="M550.847 30L550.847 35L608.045 35L608.045 30Z"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M663.994 83L663.994 30.75"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M720.192 103L720.192 30.75"></path></g><g class="vf-beam"><path stroke="none" d="M663.244 30L663.244 35L720.442 35L720.442 30Z"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M776.39 103L776.39 44.965"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M804.49 83L804.49 42.857"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M832.589 73L832.589 40.75"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M860.688 73L860.688 38.643"></path></g><g class="vf-beam"><path stroke="none" d="M775.64 44.271L775.64 49.271L860.938 42.949L860.938 37.949Z"></path><path stroke="none" d="M775.64 51.771L775.64 56.771L860.938 50.449L860.938 45.449Z"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M888.787 103L888.787 42.94"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M916.886 78L916.886 45.75"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M944.986 93L944.986 48.56"></path></g><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M973.085 93L973.085 51.37"></path></g><g class="vf-beam"><path stroke="none" d="M888.037 42.115L888.037 47.115L973.335 55.545L973.335 50.545Z"></path><path stroke="none" d="M888.037 49.615L888.037 54.615L973.335 63.045L973.335 58.045Z"></path></g><text class="count on" x="96.8" y="163" data-c="0">1</text><text class="count" x="153" y="163" data-c="0.5">y</text><text class="count on" x="209.2" y="163" data-c="1">2</text><text class="count" x="265.4" y="163" data-c="1.5">y</text><text class="count on" x="321.6" y="163" data-c="2">3</text><text class="count" x="377.8" y="163" data-c="2.5">y</text><text class="count on" x="434" y="163" data-c="3">4</text><text class="count" x="490.2" y="163" data-c="3.5">y</text><text class="count on" x="546.4" y="163" data-c="4">1</text><text class="count" x="602.6" y="163" data-c="4.5">y</text><text class="count on" x="658.8" y="163" data-c="5">2</text><text class="count" x="715" y="163" data-c="5.5">y</text><text class="count on" x="771.2" y="163" data-c="6">3</text><text class="count" x="799.3" y="163" data-c="6.25">e</text><text class="count" x="827.4" y="163" data-c="6.5">y</text><text class="count" x="855.5" y="163" data-c="6.75">a</text><text class="count on" x="883.6" y="163" data-c="7">4</text><text class="count" x="911.7" y="163" data-c="7.25">e</text><text class="count" x="939.8" y="163" data-c="7.5">y</text><text class="count" x="967.9" y="163" data-c="7.75">a</text></svg></div>
+            <div class="countin" id="countin" hidden>1</div>
+          </div>
+          <div class="live-low">
+          <svg class="scene" id="scene" viewBox="0 0 640 280" aria-hidden="true">
+            <defs>
+              <radialGradient id="g-pad" cx="50%" cy="34%" r="75%"><stop offset="0" stop-color="#454d4a"/><stop offset="1" stop-color="#1f2423"/></radialGradient>
+              <radialGradient id="g-cym" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#e3b65a"/><stop offset=".7" stop-color="#b98a34"/><stop offset="1" stop-color="#8a6420"/></radialGradient>
+              <radialGradient id="g-kick"><stop offset="0" stop-color="#d9a441" stop-opacity=".5"/><stop offset="1" stop-color="#d9a441" stop-opacity="0"/></radialGradient>
+              <linearGradient id="g-wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7e3b9"/><stop offset=".5" stop-color="#dcb571"/><stop offset="1" stop-color="#a5762f"/></linearGradient>
+              <filter id="f-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+              <linearGradient id="g-fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".82" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+              <mask id="m-fade"><rect x="-80" y="-80" width="800" height="360" fill="url(#g-fade)"/></mask>
+              <g id="stick"><path d="M12 -2.7 70 -5.6 232 -6Q238 -6 238 0 238 6 232 6L70 5.6 12 2.7Z" fill="url(#g-wood)"/><ellipse cx="7" cy="0" rx="8.5" ry="5.2" fill="#f4dfb4"/><path d="M70 -5.6 232 -6" stroke="#fff" stroke-opacity=".35" stroke-width="1" fill="none"/></g>
+            </defs>
+            <ellipse id="kglow" cx="340" cy="232" rx="290" ry="44" fill="url(#g-kick)" opacity="0"/>
+            <g class="dr" data-kit="crash"><ellipse cx="132" cy="84" rx="56" ry="21" fill="#000" opacity=".35" filter="url(#f-soft)"/><ellipse cx="132" cy="70" rx="70" ry="30" fill="url(#g-cym)"/><ellipse cx="132" cy="70" rx="43" ry="19" fill="none" stroke="#000" stroke-opacity=".18"/><ellipse cx="132" cy="69" rx="14" ry="6" fill="#f0c46a"/><ellipse class="fl" cx="132" cy="70" rx="70" ry="30" fill="#fff0c2" opacity="0"/></g><g class="dr" data-kit="ride"><ellipse cx="512" cy="98" rx="61" ry="23" fill="#000" opacity=".35" filter="url(#f-soft)"/><ellipse cx="512" cy="84" rx="76" ry="33" fill="url(#g-cym)"/><ellipse cx="512" cy="84" rx="47" ry="20" fill="none" stroke="#000" stroke-opacity=".18"/><ellipse cx="512" cy="83" rx="15" ry="7" fill="#f0c46a"/><ellipse class="fl" cx="512" cy="84" rx="76" ry="33" fill="#fff0c2" opacity="0"/></g><g class="dr" data-kit="tom1"><path d="M222 92v12a46 23 0 0 0 92 0v-12z" fill="#0e1110" stroke="#2e3532"/><ellipse cx="268" cy="92" rx="46" ry="23" fill="#6c7571"/><ellipse cx="268" cy="91" rx="40" ry="20" fill="url(#g-pad)"/><ellipse class="fl" cx="268" cy="91" rx="40" ry="20" fill="#d9a441" opacity="0"/></g><g class="dr" data-kit="tom2"><path d="M326 92v12a46 23 0 0 0 92 0v-12z" fill="#0e1110" stroke="#2e3532"/><ellipse cx="372" cy="92" rx="46" ry="23" fill="#6c7571"/><ellipse cx="372" cy="91" rx="40" ry="20" fill="url(#g-pad)"/><ellipse class="fl" cx="372" cy="91" rx="40" ry="20" fill="#d9a441" opacity="0"/></g><g class="dr" data-kit="hihat"><ellipse cx="104" cy="174" rx="45" ry="18" fill="#000" opacity=".35" filter="url(#f-soft)"/><ellipse cx="104" cy="165" rx="56" ry="25" fill="#5c4a22"/><ellipse cx="104" cy="160" rx="56" ry="25" fill="url(#g-cym)"/><ellipse cx="104" cy="160" rx="35" ry="16" fill="none" stroke="#000" stroke-opacity=".18"/><ellipse cx="104" cy="159" rx="11" ry="5" fill="#f0c46a"/><ellipse class="fl" cx="104" cy="160" rx="56" ry="25" fill="#fff0c2" opacity="0"/></g><g class="dr" data-kit="kick"><path d="M290 206v18a50 25 0 0 0 100 0v-18z" fill="#0e1110" stroke="#2e3532"/><ellipse cx="340" cy="206" rx="50" ry="25" fill="#6c7571"/><ellipse cx="340" cy="205" rx="44" ry="22" fill="url(#g-pad)"/><ellipse class="fl" cx="340" cy="205" rx="44" ry="22" fill="#d9a441" opacity="0"/></g><g class="dr" data-kit="snare"><path d="M168 186v14a58 28 0 0 0 116 0v-14z" fill="#0e1110" stroke="#2e3532"/><ellipse cx="226" cy="186" rx="58" ry="28" fill="#6c7571"/><ellipse cx="226" cy="185" rx="52" ry="25" fill="url(#g-pad)"/><ellipse class="fl" cx="226" cy="185" rx="52" ry="25" fill="#d9a441" opacity="0"/></g><g class="dr" data-kit="floor"><path d="M396 186v14a58 28 0 0 0 116 0v-14z" fill="#0e1110" stroke="#2e3532"/><ellipse cx="454" cy="186" rx="58" ry="28" fill="#6c7571"/><ellipse cx="454" cy="185" rx="52" ry="25" fill="url(#g-pad)"/><ellipse class="fl" cx="454" cy="185" rx="52" ry="25" fill="#d9a441" opacity="0"/></g>
+            <g id="rings" fill="none" stroke="#f0c46a" stroke-width="2"></g>
+            <ellipse id="shL" cx="218" cy="184" rx="11" ry="4" fill="#000" opacity=".45"/>
+            <ellipse id="shR" cx="236" cy="184" rx="11" ry="4" fill="#000" opacity=".45"/>
+            <g mask="url(#m-fade)">
+              <use href="#stick" id="stL" transform="translate(218 182) rotate(84.7)"/>
+              <use href="#stick" id="stR" transform="translate(236 182) rotate(55.4)"/>
+            </g>
+            <circle id="spark" cx="320" cy="125" r="6" fill="none" stroke="#f0c46a" stroke-width="2" opacity="0"/>
+          </svg>
+          <div class="live-foot">
+            <div class="live-ctl"><button class="play" id="play" type="button" aria-pressed="true" data-pause="Pausar" data-again="Tocar otra vez" data-play="Tocar">Pausar</button><button class="btn mute off" id="mute" type="button" aria-label="Activar sonido" data-on="Silenciar" data-off="Activar sonido"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" fill="currentColor" stroke="none"/><path class="w" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/><path class="x" d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button></div>
+            <span class="live-tip" id="live-tip" data-silent="Haz clic, toca o presiona una tecla para oír el sonido." data-idle="Haz clic o toca aquí para golpear el redoblante." data-done="Salió limpio."></span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="for">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Para quién es</p>
+        <h2 class="settle">Empieza donde estás</h2>
+      </div>
+      <ul class="ways four">
+        <li class="rv" style="--d:0">
+          <span class="tag">Empiezas de cero</span>
+          <h3>Nunca has tomado una baqueta</h3>
+          <p>La primera lección es el redoblante y la negra. Cada lección suma una sola cosa.</p>
+        </li>
+        <li class="rv" style="--d:1">
+          <span class="tag">Sin instrumento</span>
+          <h3>Sin instrumento, sin espacio, paredes delgadas</h3>
+          <p>Un pad de práctica o el teclado del computador bastan para empezar.</p>
+        </li>
+        <li class="rv" style="--d:2">
+          <span class="tag">De regreso</span>
+          <h3>Tocaste hace años</h3>
+          <p>Una prueba de nivel de cinco minutos encuentra tu punto de partida, o lo eliges tú en el mapa.</p>
+        </li>
+        <li class="rv" style="--d:3">
+          <span class="tag">Estancado</span>
+          <h3>No logras ir más rápido</h3>
+          <p>El entrenador ve cuándo una ruta se estancó y te pone una semana en otra cosa.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="play" class="glow-l">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Tres formas de tocar</p>
+        <h2 class="settle">Toca con lo que tienes</h2>
+        <p class="rv">¿Aún no tienes instrumento? Puedes aprender a tocar batería sin tener una. Cámbialo cuando quieras en Configuración.</p>
+      </div>
+      <ul class="ways">
+        <li class="rv" style="--d:0">
+          <div class="ill"><svg viewBox="0 0 200 96" role="img" aria-label="Un pad de práctica y dos baquetas" data-pad="snare"><ellipse cx="100" cy="74" rx="78" ry="16" fill="#000" opacity=".4"/><path d="M28 56v8a72 19 0 0 0 144 0v-8z" fill="#101312" stroke="#2e3532"/><ellipse cx="100" cy="56" rx="72" ry="19" fill="#59625f"/><ellipse cx="100" cy="55.4" rx="67" ry="17" fill="#343b38"/><path d="M92 52 34 14M108 52 166 14" stroke="#dcb571" stroke-width="5" stroke-linecap="round"/></svg></div>
+          <span class="tag">Pad de práctica</span>
+          <h3>Un pad o una batería acústica</h3>
+          <p>La app toca el ejercicio contigo. Tú dices si la pasada salió limpia.</p>
+        </li>
+        <li class="rv" style="--d:1">
+          <div class="ill"><div class="keys"><kbd data-pad="snare">F</kbd><kbd class="wide" data-pad="kick">Espacio</kbd><kbd data-pad="snare">J</kbd></div></div>
+          <span class="tag">Teclado</span>
+          <h3>El teclado del computador</h3>
+          <p>Espacio es el bombo, F y J el redoblante. Cada golpe se revisa.</p>
+        </li>
+        <li class="rv" style="--d:2">
+          <div class="ill"><div class="kit" aria-hidden="true"><i data-pad="crash" style="left:18px;top:0;width:40px;height:40px"></i><i data-pad="tom1" style="left:66px;top:14px;width:30px;height:30px"></i><i data-pad="tom2" style="left:101px;top:14px;width:30px;height:30px"></i><i data-pad="ride" style="left:140px;top:2px;width:46px;height:46px"></i><i class="lit" data-pad="hihat" style="left:0;top:48px;width:38px;height:38px"></i><i class="lit" data-pad="snare" style="left:40px;top:54px;width:40px;height:40px"></i><i class="lit" data-pad="kick" style="left:82px;top:46px;width:50px;height:50px"></i><i data-pad="floor" style="left:136px;top:54px;width:40px;height:40px"></i></div></div>
+          <span class="tag">Batería electrónica</span>
+          <h3>Una batería electrónica</h3>
+          <p>Un cable USB. A tiempo, el tambor correcto, fuerte o suave.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="read" class="glow-r">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">¿Aún no lees música?</p>
+        <h2 class="settle">Lee partitura de batería desde el primer día</h2>
+        <p class="rv lead">Cada línea o espacio es un tambor. Una cruz es un platillo. La línea que avanza muestra dónde vas.</p>
+      </div>
+      <div class="rv">
+        <div class="legend" id="legend">
+          <svg aria-hidden="true" stroke-width="0.3" stroke-dasharray="none" fill="black" stroke="black" font-family="Arial, sans-serif" font-size="10pt" font-weight="normal" font-style="normal" viewBox="0 0 640 170"><g class="vf-stave" stroke-width="1" fill="#999999" stroke="#999999"><path fill="none" d="M10 70L630 70"></path><path fill="none" d="M10 80L630 80"></path><path fill="none" d="M10 90L630 90"></path><path fill="none" d="M10 100L630 100"></path><path fill="none" d="M10 110L630 110"></path></g><g class="vf-stavebarline"><rect x="10" y="69.5" width="1" height="41" stroke="none"></rect></g><g class="vf-stavebarline"><rect x="630" y="69.5" width="1" height="41" stroke="none"></rect></g><g class="vf-clef"><path stroke="none" d="M21.458 99.491L21.458 80.509C21.458 80.172,21.234 79.891,20.897 79.891L15.562 79.891C15.253 79.891,15 80.172,15 80.509L15 99.491C15 99.828,15.253 100.109,15.562 100.109L20.897 100.109C21.234 100.109,21.458 99.828,21.458 99.491M30.444 80.509C30.444 80.172,30.191 79.891,29.882 79.891L24.547 79.891C24.21 79.891,23.986 80.172,23.986 80.509L23.986 99.491C23.986 99.828,24.21 100.109,24.547 100.109L29.882 100.109C30.191 100.109,30.444 99.828,30.444 99.491"></path></g><g class="vf-stavenote" data-pad="crash"><path stroke-width="1.4" fill="none" stroke="#444" d="M39.444 60L57.378 60"></path><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M53.628 56L53.628 25"></path></g><g class="vf-notehead"><path stroke="none" d="M54.153 64.015L49.352 60L54.153 55.956C54.294 55.872,54.378 55.676,54.378 55.507C54.378 55.198,54.097 54.946,53.844 54.946C53.76 54.946,53.648 54.974,53.564 55.03L48.453 59.27L43.455 55.03C43.371 54.974,43.258 54.946,43.118 54.946C42.837 54.946,42.641 55.226,42.641 55.479C42.641 55.62,42.725 55.844,42.837 55.956L47.667 60L42.837 64.015C42.669 64.128,42.641 64.296,42.641 64.437C42.641 64.774,42.837 65.054,43.174 65.054C43.286 65.054,43.371 65.026,43.455 64.942L48.453 60.674L53.564 64.942C53.648 65.026,53.76 65.054,53.844 65.054C54.153 65.054,54.378 64.717,54.378 64.493C54.378 64.296,54.294 64.128,54.153 64.015"></path></g></g><g class="vf-stavenote" data-pad="hihat"><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M133.003 61L133.003 30"></path></g><g class="vf-notehead"><path stroke="none" d="M133.528 69.015L128.726 65L133.528 60.956C133.668 60.872,133.753 60.676,133.753 60.507C133.753 60.198,133.472 59.946,133.219 59.946C133.135 59.946,133.022 59.974,132.938 60.03L127.828 64.27L122.829 60.03C122.745 59.974,122.633 59.946,122.492 59.946C122.212 59.946,122.015 60.226,122.015 60.479C122.015 60.62,122.099 60.844,122.212 60.956L127.041 65L122.212 69.015C122.043 69.128,122.015 69.296,122.015 69.437C122.015 69.774,122.212 70.054,122.549 70.054C122.661 70.054,122.745 70.026,122.829 69.942L127.828 65.674L132.938 69.942C133.022 70.026,133.135 70.054,133.219 70.054C133.528 70.054,133.753 69.717,133.753 69.493C133.753 69.296,133.668 69.128,133.528 69.015"></path></g></g><g class="vf-stavenote" data-pad="tom1"><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M212.377 73L212.377 40"></path></g><g class="vf-notehead"><path stroke="none" d="M205.124 80.054C208.719 80.054,213.127 76.741,213.127 73.315C213.127 71.237,211.499 69.946,209.196 69.946C204.759 69.946,201.193 73.231,201.193 76.685C201.193 78.791,202.934 80.054,205.124 80.054"></path></g></g><g class="vf-stavenote" data-pad="tom2"><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M291.752 78L291.752 45"></path></g><g class="vf-notehead"><path stroke="none" d="M284.499 85.054C288.093 85.054,292.502 81.741,292.502 78.315C292.502 76.237,290.873 74.946,288.571 74.946C284.134 74.946,280.568 78.231,280.568 81.685C280.568 83.791,282.309 85.054,284.499 85.054"></path></g></g><g class="vf-stavenote" data-pad="snare"><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M371.126 83L371.126 50"></path></g><g class="vf-notehead"><path stroke="none" d="M363.873 90.054C367.468 90.054,371.876 86.741,371.876 83.315C371.876 81.237,370.248 79.946,367.945 79.946C363.508 79.946,359.942 83.231,359.942 86.685C359.942 88.791,361.683 90.054,363.873 90.054"></path></g></g><g class="vf-stavenote" data-pad="floor"><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M450.501 93L450.501 60"></path></g><g class="vf-notehead"><path stroke="none" d="M443.248 100.054C446.842 100.054,451.251 96.741,451.251 93.315C451.251 91.237,449.622 89.946,447.32 89.946C442.883 89.946,439.317 93.231,439.317 96.685C439.317 98.791,441.058 100.054,443.248 100.054"></path></g></g><g class="vf-stavenote" data-pad="kick"><g class="vf-stem"><path stroke-width="1.5" fill="none" d="M529.875 103L529.875 70"></path></g><g class="vf-notehead"><path stroke="none" d="M522.623 110.054C526.217 110.054,530.625 106.741,530.625 103.315C530.625 101.237,528.997 99.946,526.694 99.946C522.258 99.946,518.691 103.231,518.691 106.685C518.691 108.791,520.432 110.054,522.623 110.054"></path></g></g></svg>
+          <div class="legend-keys">
+            <button type="button" data-pad="crash" style="left:7.6%">Crash</button>
+            <button type="button" data-pad="hihat" style="left:20.0%">Hi-hat</button>
+            <button type="button" data-pad="tom1" style="left:32.4%">Tom 1</button>
+            <button type="button" data-pad="tom2" style="left:44.8%">Tom 2</button>
+            <button type="button" data-pad="snare" style="left:57.2%">Redoblante</button>
+            <button type="button" data-pad="floor" style="left:69.6%">Tom de piso</button>
+            <button type="button" data-pad="kick" style="left:82.0%">Bombo</button>
+          </div>
+        </div>
+        <p class="legend-note">Toca un tambor para oírlo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The journey. To add a path: one <li> in #paths. To add a style: one button in .chips, listing its paths in data-paths.
+       The basics every plan keeps are in data-trunk on #paths (app/src/styles.ts: TRUNK, STYLE_PATHS, TECHNIQUE). -->
+  <section id="journey">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">De principiante a avanzado</p>
+        <h2 class="settle">De tu primera negra al nivel avanzado</h2>
+        <p class="rv">16 rutas, 101 niveles, 227 ejercicios. Ocho hitos marcan el camino.</p>
+      </div>
+      <ol class="miles" id="miles">
+        <li>Primeros pasos</li>
+        <li>Corcheas</li>
+        <li>Semicorcheas</li>
+        <li>Fuerte, suave y lo tuyo</li>
+        <li>Tresillos y cuatro extremidades</li>
+        <li>Control</li>
+        <li>El tiempo es tuyo</li>
+        <li>Avanzado</li>
+      </ol>
+      <div class="pick rv" id="pick">
+        <div class="pick-head">
+          <h3>¿Qué quieres tocar?</h3>
+          <p>Un estilo, varios, o el instrumento en sí. Define el plan de cada día y nada queda bloqueado.</p>
+        </div>
+        <div class="chips" role="group" aria-label="¿Qué quieres tocar?">
+          <button type="button" aria-pressed="false" data-paths="grooves fills hihat">Rock</button>
+          <button type="button" aria-pressed="false" data-paths="doublekick odd">Metal</button>
+          <button type="button" aria-pressed="false" data-paths="funk">Pop y funk</button>
+          <button type="button" aria-pressed="false" data-paths="latin">Latino</button>
+          <button type="button" aria-pressed="false" data-paths="jazz">Jazz</button>
+          <button type="button" aria-pressed="false" data-paths="rudiments2 dynamics plateau">Dominar el instrumento</button>
+        </div>
+        <ul class="paths" id="paths" aria-label="Las dieciséis rutas" data-trunk="reading time rudiments independence">
+          <li data-id="reading" style="--c:#6ea8f2">Lectura</li>
+          <li data-id="time" style="--c:#3fc4b3">Tiempo y ritmo</li>
+          <li data-id="rudiments" style="--c:#d9a441">Manos y rudimentos</li>
+          <li data-id="independence" style="--c:#86b4e0">Independencia</li>
+          <li data-id="grooves" style="--c:#f0806a">Ritmos</li>
+          <li data-id="fills" style="--c:#b08cf0">Fills</li>
+          <li data-id="hihat" style="--c:#9ccf5f">Hi-hat</li>
+          <li data-id="ear" style="--c:#f2a6c8">Pregunta y respuesta</li>
+          <li data-id="dynamics" style="--c:#f07ab0">Dinámica y notas fantasma</li>
+          <li data-id="rudiments2" style="--c:#b39ae8">Rudimentos, parte 2</li>
+          <li data-id="latin" style="--c:#f08a5d">Latino</li>
+          <li data-id="funk" style="--c:#e0c060">Funk y pop</li>
+          <li data-id="doublekick" style="--c:#e09a62">Doble bombo</li>
+          <li data-id="odd" style="--c:#4fd0e0">Compases impares</li>
+          <li data-id="plateau" style="--c:#aab4c0">Para salir del estancamiento</li>
+          <li data-id="jazz" style="--c:#6fd0c4">Jazz básico</li>
+        </ul>
+        <p class="pick-note" id="pick-note" data-all="Toca un estilo para ver sus rutas." data-on="Encendidas: lo básico que todo plan conserva y las rutas de esta elección.">Toca un estilo para ver sus rutas.</p>
+      </div>
+      <div class="cta-row rv">
+        <a class="btn primary big" href="/onbeat-app/app/">Empieza en la lección uno</a>
+        <span class="muted">Gratis. Sin cuenta.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="lessons" class="glow-l">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">¿Sin profesor a la mano?</p>
+        <h2 class="settle">Te dice qué practicar después</h2>
+        <dl class="engine">
+          <div class="rv" style="--d:0"><dt>Hoy</dt><dd>Una sesión de 10, 20 o 45 minutos que mezcla de 2 a 4 áreas.</dd></div>
+          <div class="rv" style="--d:1"><dt>Más fácil, Más difícil</dt><dd>Un cambio a la vez, como un bombo en la "y" del 3.</dd></div>
+          <div class="rv" style="--d:2"><dt>El entrenador</dt><dd>Lee tu historial y sugiere un cambio cuando una ruta se estanca.</dd></div>
+          <div class="rv" style="--d:3"><dt>Tu mapa</dt><dd>Cada ruta y cada nivel, con ocho hitos por completar.</dd></div>
+        </dl>
+      </div>
+      <div class="layers">
+        <figure class="shot l1" data-v data-sp="-50">
+          <img src="/onbeat-app/img/harder-es-720.webp" srcset="/onbeat-app/img/harder-es-720.webp 720w, /onbeat-app/img/harder-es-1280.webp 1280w" sizes="(min-width: 900px) 540px, 100vw" width="1280" height="652" loading="lazy" alt="Primer ritmo de rock, Más difícil 1: la nota bajo la música dice Más difícil 1 de 5, un bombo en la y del 3.">
+          <figcaption>Un clic en Más difícil: "un bombo en la 'y' del 3".</figcaption>
+        </figure>
+        <figure class="shot l2" data-v data-sp="60">
+          <img src="/onbeat-app/img/map-es-720.webp" srcset="/onbeat-app/img/map-es-720.webp 720w, /onbeat-app/img/map-es-1280.webp 1280w" sizes="(min-width: 900px) 360px, 100vw" width="1280" height="906" loading="lazy" alt="Tu mapa en Progreso: los hitos arriba y luego una línea por ruta con una parada por cada nivel.">
+          <figcaption>Tu mapa: cada línea es una ruta, cada parada un nivel.</figcaption>
+        </figure>
+        <figure class="shot phone l3" data-v data-sp="150">
+          <img src="/onbeat-app/img/phone-today-es-360.webp" srcset="/onbeat-app/img/phone-today-es-360.webp 360w, /onbeat-app/img/phone-today-es-720.webp 720w" sizes="(min-width: 900px) 160px, 250px" width="360" height="780" loading="lazy" alt="Hoy en un celular: una sesión de 20 minutos con calentamientos y ejercicios nuevos, y un botón para empezar la sesión.">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" class="stage-sec">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Celular, iPad, computador o televisor</p>
+        <h2 class="settle">Tu sala de práctica, en cualquier pantalla</h2>
+      </div>
+    </div>
+    <div class="pin" id="pin">
+      <div class="stage" id="stage" aria-hidden="true">
+        <div class="stage-glow"></div>
+        <div class="dev-wrap">
+          <div class="dev" id="dev">
+            <div class="dev-screen">
+              <img src="/onbeat-app/img/phone-loop-es-360.webp" srcset="/onbeat-app/img/phone-loop-es-360.webp 360w, /onbeat-app/img/phone-loop-es-720.webp 720w" sizes="(min-width: 900px) 320px, 50vw" width="360" height="780" loading="lazy" alt="El ciclo con pad en un celular: el ritmo de rock, los botones de tempo, Salió limpio, Aún no, Parar, Más fácil y Más difícil, y el dibujo de la batería.">
+              <img src="/onbeat-app/img/ipad-es-960.webp" srcset="/onbeat-app/img/ipad-es-960.webp 960w, /onbeat-app/img/ipad-es-1600.webp 1600w" sizes="(min-width: 900px) 50vw, 100vw" width="960" height="668" loading="lazy" alt="El ciclo con pad en un iPad horizontal: el primer ritmo de rock a lo ancho de la pantalla, los botones del ciclo y el dibujo de la batería debajo.">
+              <img src="/onbeat-app/img/pad-loop-es-720.webp" srcset="/onbeat-app/img/pad-loop-es-720.webp 720w, /onbeat-app/img/pad-loop-es-1280.webp 1280w" sizes="(min-width: 900px) 50vw, 100vw" width="1280" height="652" loading="lazy" alt="El ciclo con pad en un computador: primer ritmo de rock a 70 bpm, ciclo 1, con los botones Salió limpio, Aún no, Parar, Más fácil y Más difícil.">
+              <img src="/onbeat-app/img/tv-es-960.webp" srcset="/onbeat-app/img/tv-es-960.webp 960w, /onbeat-app/img/tv-es-1600.webp 1600w" sizes="(min-width: 900px) 56vw, 100vw" width="1600" height="900" loading="lazy" alt="La app en una pantalla del tamaño de un televisor: un ritmo de rock escrito a todo lo ancho, una línea que avanza en el tercer tiempo y los botones del ciclo.">
+              <div class="dev-base"></div>
+            </div>
+            <div class="dev-stand"></div>
+          </div>
+        </div>
+        <ol class="rail"><li>Celular</li><li>iPad</li><li>Computador</li><li>Televisor</li></ol>
+      </div>
+      <div class="steps wrap" id="steps">
+        <div class="step">
+          <div class="card"><span class="tag">En el celular</span><h3>Apóyalo en un atril</h3><p>El ritmo, el tempo y los botones del ciclo al alcance.</p></div>
+          <figure class="shot phone"><img src="/onbeat-app/img/phone-loop-es-360.webp" srcset="/onbeat-app/img/phone-loop-es-360.webp 360w, /onbeat-app/img/phone-loop-es-720.webp 720w" sizes="230px" width="360" height="780" loading="lazy" alt="El ciclo con pad en un celular: el ritmo de rock, los botones de tempo, Salió limpio, Aún no, Parar, Más fácil y Más difícil, y el dibujo de la batería."></figure>
+        </div>
+        <div class="step">
+          <div class="card"><span class="tag">En un iPad o tableta</span><h3>Espacio para la música y los tambores</h3><p>Funciona en el navegador. Nada que instalar.</p></div>
+          <figure class="shot"><img src="/onbeat-app/img/ipad-es-960.webp" srcset="/onbeat-app/img/ipad-es-960.webp 960w, /onbeat-app/img/ipad-es-1600.webp 1600w" sizes="(min-width: 660px) 620px, 100vw" width="960" height="668" loading="lazy" alt="El ciclo con pad en un iPad horizontal: el primer ritmo de rock a lo ancho de la pantalla, los botones del ciclo y el dibujo de la batería debajo."></figure>
+        </div>
+        <div class="step">
+          <div class="card"><span class="tag">En el computador</span><h3>Cada golpe revisado</h3><p>Con el teclado o una batería electrónica: a tiempo, el tambor correcto, fuerte o suave.</p></div>
+          <!-- REEL 2 can replace this screenshot: the loop on a pad, with "That was clean" moving the tempo up. -->
+          <figure class="shot" data-reel="pad-loop"><img src="/onbeat-app/img/pad-loop-es-720.webp" srcset="/onbeat-app/img/pad-loop-es-720.webp 720w, /onbeat-app/img/pad-loop-es-1280.webp 1280w" sizes="(min-width: 660px) 620px, 100vw" width="1280" height="652" loading="lazy" alt="El ciclo con pad en un computador: primer ritmo de rock a 70 bpm, ciclo 1, con los botones Salió limpio, Aún no, Parar, Más fácil y Más difícil."></figure>
+        </div>
+        <div class="step">
+          <div class="card"><span class="tag">En el televisor</span><h3>Léelo desde la silla</h3><p>La música ocupa todo el ancho. Un ajuste de Imagen la alinea con el sonido.</p></div>
+          <figure class="shot"><img src="/onbeat-app/img/tv-es-960.webp" srcset="/onbeat-app/img/tv-es-960.webp 960w, /onbeat-app/img/tv-es-1600.webp 1600w" sizes="(min-width: 660px) 620px, 100vw" width="1600" height="900" loading="lazy" alt="La app en una pantalla del tamaño de un televisor: un ritmo de rock escrito a todo lo ancho, una línea que avanza en el tercer tiempo y los botones del ciclo."></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mac-songs">
+    <div class="wrap duo">
+      <div class="rv">
+        <h2>Canciones, en la app de escritorio</h2>
+        <p class="muted">Toca con las canciones que agregues, completas o por partes. No trae canciones.</p>
+      </div>
+      <div class="rv" style="--d:1">
+        <h2>Gratis y privado</h2>
+        <ul class="ticks">
+          <li>Gratis. Sin anuncios, sin versión paga.</li>
+          <li>Sin cuenta, sin rastreo.</li>
+          <li>Tu progreso se queda en tu dispositivo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="sync" class="glow-r">
+    <div class="wrap split top-align">
+      <div>
+        <p class="eyebrow">Para quienes apoyan</p>
+        <h2 class="settle">Tu perfil en la nube</h2>
+        <p class="rv lead">Practica hoy en el televisor, sigue mañana desde el celular. Una donación de <b>US$10 (40.000 pesos) o más</b> desbloquea un perfil en la nube, en hasta 3 dispositivos a la vez.</p>
+        <p class="rv"><a class="btn" href="/onbeat-app/support.html">Donar</a></p>
+      </div>
+      <div class="note rv" style="--d:1">
+        <h3>¿Por qué una donación?</h3>
+        <p>Esta app es gratis y la hace una sola persona, en Colombia. Sincronizar necesita un servicio en internet, así que el perfil en la nube es un agradecimiento para quienes apoyan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="get">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Sin cuenta, nada que instalar</p>
+        <h2 class="settle">Empieza a practicar</h2>
+      </div>
+      <div class="get">
+        <div class="main rv">
+          <h3>En la web</h3>
+          <p class="muted">En Chrome en Mac o Windows. En celular, tableta o televisor para un pad de práctica.</p>
+          <a class="btn primary" href="/onbeat-app/app/">Abrir versión web</a>
+        </div>
+        <div class="rv" style="--d:1">
+          <h3>Mac</h3>
+          <p class="muted">Apple silicon (M1 o más nuevo). Suma canciones y copia de seguridad diaria.</p>
+          <a class="btn" href="https://github.com/eddie85u/onbeat-app/releases/latest/download/Onbeat-mac.zip">Descargar para Mac</a>
+          <p class="small muted" style="margin-top:10px"><a href="#faq-mac">Cómo abrirla la primera vez</a> · <a href="https://github.com/eddie85u/onbeat-app/releases/latest">Todas las descargas</a></p>
+        </div>
+        <div class="rv" style="--d:2">
+          <h3>Windows</h3>
+          <p class="muted">Windows 10 u 11, de 64 bits. Suma canciones y una copia de seguridad diaria.</p>
+          <a class="btn" href="https://github.com/eddie85u/onbeat-app/releases/latest/download/Onbeat-windows.zip">Descargar para Windows</a>
+          <p class="small muted" style="margin-top:10px"><a href="#faq-windows">Cómo abrirla la primera vez</a> · <a href="https://github.com/eddie85u/onbeat-app/releases/latest">Todas las descargas</a></p>
+        </div>
+      </div>
+      <div class="compare rv">
+        <table>
+          <thead><tr><th scope="col"><span class="small muted">Qué incluye</span></th><th scope="col">Web</th><th scope="col">App para Mac</th><th scope="col">App para Windows</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Las 16 rutas y el plan de Hoy</th><td class="yes">Sí</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+            <tr><th scope="row">Pad de práctica y teclado</th><td class="yes">Sí</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+            <tr><th scope="row">Batería electrónica, cada golpe revisado</th><td class="yes">En Chrome en un computador</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+            <tr><th scope="row">Celular, tableta y televisor</th><td class="yes">Sí, con pad de práctica</td><td>No</td><td>No</td></tr>
+            <tr><th scope="row">Canciones que agregas</th><td>No</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+            <tr><th scope="row">Progreso guardado mientras tocas</th><td class="yes">Sí, en este navegador</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+            <tr><th scope="row">Archivo de copia de seguridad</th><td>A mano, a un archivo</td><td class="yes">Cada día que practicas</td><td class="yes">Cada día que practicas</td></tr>
+            <tr><th scope="row">Perfil en la nube para quienes apoyan</th><td class="yes">Sí</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+            <tr><th scope="row">Para instalar</th><td>Nada</td><td>Una descarga</td><td>Una descarga</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap faq">
+      <h2 class="settle">Preguntas</h2>
+      <div class="faq-group">
+        <h3 class="faq-h">Para empezar</h3>
+        <details>
+          <summary>¿Es gratis?</summary>
+          <div><p>Sí. Es gratis, sin anuncios y sin versión paga. Las donaciones son voluntarias; US$10 (40.000 pesos) o más desbloquea un perfil en la nube, sincronizado en hasta 3 dispositivos a la vez.</p></div>
+        </details>
+        <details>
+          <summary>¿Sirve para empezar desde cero?</summary>
+          <div><p>Sí. Las lecciones empiezan desde cero: la primera es el redoblante y la negra, y cada lección suma una sola cosa. No hay profesor ni cuenta; vas a tu propio ritmo.</p></div>
+        </details>
+        <details>
+          <summary>¿Necesito saber leer música?</summary>
+          <div><p>No. La app te enseña a leer partitura de batería mientras tocas: cada línea o espacio es un tambor, una cruz es un platillo y una línea que avanza muestra dónde vas.</p></div>
+        </details>
+        <details>
+          <summary>¿Puedo aprender a tocar batería sin una batería?</summary>
+          <div><p>Sí. Puedes practicar en un pad de práctica, en una batería acústica o en el teclado del computador. Una batería electrónica conectada por USB además revisa cada golpe.</p></div>
+        </details>
+        <details>
+          <summary>Ya toco. ¿Por dónde empiezo?</summary>
+          <div><p>Elige "Ya he tocado" cuando abra la app. Con el teclado o una batería electrónica, una prueba de nivel de unos cinco minutos encuentra tu nivel en cada ruta. En un pad de práctica eliges tu punto de partida en el mapa.</p></div>
+        </details>
+        <details>
+          <summary>¿Qué estilos puedo aprender?</summary>
+          <div><p>Rock, metal, pop y funk, latino y jazz básico. La ruta latina empieza con ritmos colombianos: cumbia, vallenato y dembow. Eliges un estilo, varios o el instrumento en sí, y puedes cambiarlo cuando quieras en Configuración.</p></div>
+        </details>
+      </div>
+      <div class="faq-group">
+        <h3 class="faq-h">Tu equipo</h3>
+        <details>
+          <summary>¿Me oye en un pad de práctica?</summary>
+          <div><p>No. En un pad o una batería acústica la app no te oye: toca el ejercicio contigo y tú dices si cada pasada salió limpia. Con el teclado o una batería electrónica revisa cada golpe: a tiempo, el tambor correcto, fuerte o suave.</p></div>
+        </details>
+        <details>
+          <summary>¿Qué navegador necesito?</summary>
+          <div><p>En un computador, Google Chrome en Mac o Windows: es el navegador que se conecta con una batería electrónica. Para un pad de práctica también sirve el navegador del celular, la tableta o el televisor.</p></div>
+        </details>
+        <details>
+          <summary>¿Funciona en mi televisor?</summary>
+          <div><p>Si tu televisor tiene navegador, sí, para practicar en un pad. La app tiene una vista para pantallas grandes, un protector de pantalla cuando no está sonando nada y un ajuste de Imagen por si la línea que avanza se adelanta al sonido.</p></div>
+        </details>
+        <details>
+          <summary>¿Está en español?</summary>
+          <div><p>Sí. La app y esta página están en español (Colombia) e inglés. Cambia con EN | ES arriba cuando quieras.</p></div>
+        </details>
+      </div>
+      <div class="faq-group">
+        <h3 class="faq-h">La app de escritorio</h3>
+        <details>
+          <summary>¿Dónde están las canciones?</summary>
+          <div><p>Tocar con canciones es en la app de escritorio, para Mac o Windows. La app no trae canciones: tú agregas la partitura de batería de una canción, hecha por fans para Clone Hero o YARG, y su audio si lo tienes.</p></div>
+        </details>
+        <details id="faq-mac">
+          <summary>¿Cómo abro la app para Mac la primera vez?</summary>
+          <div><p>Descarga Onbeat-mac.zip, ábrelo y arrastra la app a Aplicaciones. La primera vez, macOS dice que no puede verificar la app, porque no viene de la App Store: oprime Aceptar y luego, en Ajustes del Sistema &gt; Privacidad y seguridad, oprime Abrir de todos modos junto al mensaje sobre la app.</p></div>
+        </details>
+        <details>
+          <summary>¿Hay app para Windows?</summary>
+          <div><p>Sí, para Windows 10 u 11 (64 bits), con canciones y copia de seguridad diaria como la app para Mac. Descárgala en Empieza a practicar.</p></div>
+        </details>
+        <details id="faq-windows">
+          <summary>¿Cómo abro la app para Windows la primera vez?</summary>
+          <div><p>Descarga Onbeat-windows.zip, haz clic derecho, elige Extraer todo y abre Onbeat.exe en la carpeta extraída. La primera vez, Windows dice que protegió tu PC, porque la app no viene de Microsoft Store: oprime Más información y luego Ejecutar de todas formas. Lo pregunta solo una vez.</p></div>
+        </details>
+      </div>
+      <div class="faq-group">
+        <h3 class="faq-h">Tu progreso</h3>
+        <details>
+          <summary>¿Dónde se guarda mi progreso?</summary>
+          <div><p>En tu dispositivo: en el navegador en la versión web, y en la app en un computador Mac o Windows. En Configuración, la copia de seguridad lo guarda en un archivo que puedes pasar a otro computador. Varias personas pueden compartir un dispositivo, cada una con su propio perfil.</p></div>
+        </details>
+        <details>
+          <summary>¿Cómo consigo el perfil en la nube?</summary>
+          <div><p>Dona US$10 (40.000 pesos) o más y escribe a <a href="mailto:eddie@strategyandstack.com">eddie@strategyandstack.com</a> con los datos de tu transferencia. Recibes un código para escribir en Configuración &gt; Sincronizar, y luego vinculas tus otros dispositivos con un código QR. Guarda el código: con él vuelves a entrar desde un dispositivo nuevo. Solo el progreso y los ajustes de ese perfil se guardan en línea, sin nombres ni correos.</p></div>
+        </details>
+      </div>
+      <div class="faq-group">
+        <h3 class="faq-h">Ayuda y créditos</h3>
+        <details>
+          <summary>¿Algo no funciona, o tienes una idea?</summary>
+          <div><p>Cuéntanos en <a href="https://github.com/eddie85u/onbeat-app/issues">GitHub</a>, o escribe a <a href="mailto:eddie@strategyandstack.com">eddie@strategyandstack.com</a>. Di qué estabas haciendo y en qué dispositivo; una captura de pantalla ayuda.</p></div>
+        </details>
+        <details>
+          <summary>¿Quién la hace?</summary>
+          <div><p>Eddie Bello, en Colombia, también aprendiendo batería.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="end">
+    <div class="wrap">
+      <h2 class="settle">Cuando quieras, empezamos</h2>
+      <p class="muted rv">Toma tus baquetas: la primera lección es el redoblante y la negra.</p>
+      <div class="cta rv">
+        <a class="btn primary big" href="/onbeat-app/app/">Abrir versión web</a>
+        <a class="btn big" href="#get">Descargar la app</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-brand">
+      <a class="brand" href="/onbeat-app/"><svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#f4f2ec"/><path d="M5 9h18M5 14h18M5 19h18" stroke="#9aa19d" stroke-width="1.4"/><ellipse cx="10.5" cy="16.5" rx="3.4" ry="2.5" transform="rotate(-20 10.5 16.5)" fill="#1b1f1e"/><path d="M13.6 16V6.5" stroke="#1b1f1e" stroke-width="1.6"/><path d="M19 4v20" stroke="#b07a12" stroke-width="2.4" stroke-linecap="round"/></svg>Onbeat</a>
+      <p>Lecciones de batería gratis, un tiempo a la vez.</p>
+      <p class="small">Hecho en Colombia con amor, por <a href="https://strategyandstack.com/">Eddie Bello</a>.</p>
+    </div>
+    <nav aria-label="La app">
+      <p class="foot-h">La app</p>
+      <a href="/onbeat-app/app/">Abrir en la web</a>
+      <a href="#get">Descargar la app</a>
+      <a href="https://github.com/eddie85u/onbeat-app/releases/latest">Todas las descargas</a>
+      <a href="/onbeat-app/support.html">Donar</a>
+      <a href="https://github.com/eddie85u/onbeat-app/issues">Ayuda y comentarios</a>
+    </nav>
+    <nav aria-label="En esta página">
+      <p class="foot-h">En esta página</p>
+      <a href="#for">Para quién es</a>
+      <a href="#journey">El recorrido</a>
+      <a href="#screens">Cualquier pantalla</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <nav aria-label="Eddie Bello">
+      <p class="foot-h">Hecho por Eddie</p>
+      <a href="https://www.linkedin.com/in/eddiebello/">LinkedIn</a>
+      <a href="https://www.instagram.com/eddie85u/">Instagram</a>
+      <a href="/onbeat-app/" lang="en" hreflang="en">English</a>
+    </nav>
+  </div>
+  <div class="wrap foot-legal">
+    <p class="small">Sin cuentas, anuncios, rastreo ni cookies. Tu progreso se queda en tu dispositivo, a menos que actives la sincronización de un perfil; entonces el progreso de ese perfil, sin nombres ni correos, se guarda en el servicio de sincronización de la app. Partitura de batería dibujada con VexFlow.</p>
+  </div>
+</footer>
+<script type="application/json" id="staff-data">{"slots":[{"b":0,"x":96.8,"pads":["kick","hihat"],"ys":[105,65],"stick":""},{"b":0.5,"x":153,"pads":["hihat"],"ys":[65],"stick":""},{"b":1,"x":209.2,"pads":["snare","hihat"],"ys":[85,65],"stick":""},{"b":1.5,"x":265.4,"pads":["kick","hihat"],"ys":[105,65],"stick":""},{"b":2,"x":321.6,"pads":["kick","hihat"],"ys":[105,65],"stick":""},{"b":2.5,"x":377.8,"pads":["hihat"],"ys":[65],"stick":""},{"b":3,"x":434,"pads":["snare","hihat"],"ys":[85,65],"stick":""},{"b":3.5,"x":490.2,"pads":["hihat"],"ys":[65],"stick":""},{"b":4,"x":546.4,"pads":["kick","hihat"],"ys":[105,65],"stick":""},{"b":4.5,"x":602.6,"pads":["hihat"],"ys":[65],"stick":""},{"b":5,"x":658.8,"pads":["snare","hihat"],"ys":[85,65],"stick":""},{"b":5.5,"x":715,"pads":["kick","hihat"],"ys":[105,65],"stick":""},{"b":6,"x":771.2,"pads":["kick","snare"],"ys":[105,85],"stick":"R"},{"b":6.25,"x":799.3,"pads":["snare"],"ys":[85],"stick":"L"},{"b":6.5,"x":827.4,"pads":["tom1"],"ys":[75],"stick":"R"},{"b":6.75,"x":855.5,"pads":["tom1"],"ys":[75],"stick":"L"},{"b":7,"x":883.6,"pads":["kick","tom2"],"ys":[105,80],"stick":"R"},{"b":7.25,"x":911.7,"pads":["tom2"],"ys":[80],"stick":"L"},{"b":7.5,"x":939.8,"pads":["floor"],"ys":[95],"stick":"R"},{"b":7.75,"x":967.9,"pads":["floor"],"ys":[95],"stick":"L"}],"endX":996,"width":1000,"beats":8}</script>
+</body>
+</html>
