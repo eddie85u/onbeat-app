@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Onbeat app icon: a staff with two notes and the brass playhead, on a dark tile. -->
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="#1b1f1e"/>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="none" stroke="#2e3532" stroke-width="6"/>
+  <g stroke="#e7ebe9" stroke-opacity="0.35" stroke-width="10">
+    <line x1="190" y1="392" x2="834" y2="392"/>
+    <line x1="190" y1="462" x2="834" y2="462"/>
+    <line x1="190" y1="532" x2="834" y2="532"/>
+    <line x1="190" y1="602" x2="834" y2="602"/>
+    <line x1="190" y1="672" x2="834" y2="672"/>
+  </g>
+  <!-- notes -->
+  <g fill="#e7ebe9">
+    <ellipse cx="330" cy="567" rx="52" ry="38" transform="rotate(-20 330 567)"/>
+    <rect x="368" y="300" width="16" height="262"/>
+    <ellipse cx="700" cy="567" rx="52" ry="38" transform="rotate(-20 700 567)"/>
+    <rect x="738" y="300" width="16" height="262"/>
+  </g>
+  <!-- the playhead, on the beat -->
+  <rect x="502" y="250" width="26" height="524" rx="13" fill="#d9a441"/>
+  <circle cx="515" cy="567" r="46" fill="#d9a441"/>
+</svg>

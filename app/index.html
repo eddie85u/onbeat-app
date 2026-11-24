@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onbeat: learn the drums, one beat at a time</title>
+  <meta name="description" content="Free drum practice: read and play along on a practice pad, the computer keyboard or an electronic kit. Lessons in ten paths, in English and Spanish. Practica batería gratis.">
+  <meta name="theme-color" content="#131615">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <!-- What a shared link shows (WhatsApp, LinkedIn, messages). The image needs a full address. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Onbeat">
+  <meta property="og:title" content="Onbeat: learn the drums, one beat at a time">
+  <meta property="og:description" content="Free drum practice on a pad, the keyboard or an electronic kit. In English and Spanish.">
+  <meta property="og:url" content="https://eddie85u.github.io/onbeat-app/app/">
+  <link rel="canonical" href="https://eddie85u.github.io/onbeat-app/app/">
+  <meta property="og:image" content="https://eddie85u.github.io/onbeat-app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Onbeat: learn the drums, one beat at a time">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>
+    // Use the saved light or dark choice before anything is drawn, so the page does not flash.
+    try {
+      var id = JSON.parse(localStorage.getItem('onbeat.current') || 'null') || (JSON.parse(localStorage.getItem('onbeat.profiles') || '[]')[0] || {}).id;
+      var theme = ((JSON.parse(localStorage.getItem('onbeat.v2:' + id) || '{}') || {}).settings || {}).theme;
+      if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+    } catch (e) { /* no saved choice */ }
+  </script>
+  <script type="module" crossorigin src="./assets/index-DUmYWNkF.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-B0KI5nwH.css">
+</head>
+<body>
+  <div id="welcome" class="welcome" role="dialog" aria-modal="true" aria-label="Welcome to Onbeat" data-es-aria-label="Bienvenido a Onbeat" hidden></div>
+  <header class="top">
+    <h1><button id="home" class="home" title="Back to Today" data-es-title="Volver a Hoy">Onbeat</button></h1>
+    <nav id="nav" aria-label="Screens" data-es-aria-label="Pantallas">
+      <button data-view="today" data-es="Hoy">Today</button>
+      <button data-view="practice" data-es="Práctica">Practice</button>
+      <button data-view="songs" data-es="Canciones">Songs</button>
+      <button data-view="progress" data-es="Progreso">Progress</button>
+    </nav>
+    <span id="kit" class="kit">Kit: not connected. Using the keyboard.</span>
+    <div id="lang" class="lang" role="group" aria-label="Language" data-es-aria-label="Idioma">
+      <button data-lang="en" title="English" lang="en">EN</button>
+      <button data-lang="es" title="Español (Colombia)" lang="es">ES</button>
+    </div>
+    <button id="profile-btn" class="profile-btn" aria-expanded="false" title="Profiles" data-es-title="Perfiles"></button>
+    <button id="settings-btn" aria-expanded="false" data-es="Configuración" aria-label="Settings" data-es-aria-label="Configuración">Settings</button>
+  </header>
+
+  <section id="profiles" class="settings" hidden>
+    <div class="page">
+      <div class="settings-grid">
+        <div>
+          <h3 data-es="Perfiles">Profiles</h3>
+          <p class="muted" data-es="Cada perfil guarda su propio progreso, historial y configuración en este computador.">Each profile keeps its own progress, history and settings on this computer.</p>
+          <div id="profile-list"></div>
+        </div>
+        <div>
+          <h3 data-es="Agregar a alguien">Add someone</h3>
+          <form id="profile-add" class="row">
+            <input type="text" id="profile-name" maxlength="24" placeholder="Name" aria-label="Name for the new profile" data-es-placeholder="Nombre" data-es-aria-label="Nombre del nuevo perfil">
+            <button type="submit" data-es="Agregar y cambiar">Add and switch</button>
+          </form>
+          <p id="profile-note" class="muted" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="settings" class="settings" hidden>
+    <div class="page">
+      <div class="settings-grid">
+        <div class="phone-only">
+          <h3 data-es="Idioma">Language</h3>
+          <div class="lang lang-settings" role="group" aria-label="Language" data-es-aria-label="Idioma">
+            <button data-lang="en" lang="en">English</button>
+            <button data-lang="es" lang="es">Español</button>
+          </div>
+        </div>
+        <div>
+          <h3 data-es="Sonido e imagen">Sound and picture</h3>
+          <label><input type="checkbox" id="sounds"> <span data-es="Sonidos de batería desde el teclado">Drum sounds from the keyboard</span></label>
+          <label><input type="checkbox" id="showkit"> <span data-es="Mostrar el dibujo de la batería">Show the kit picture</span></label>
+          <label><span data-es="Colores">Theme</span> <select id="theme">
+            <option value="auto" data-es="Igual que mi computador">Match my computer</option>
+            <option value="light" data-es="Claro">Light</option>
+            <option value="dark" data-es="Oscuro">Dark</option>
+          </select></label>
+          <h3 class="settings-sub" data-es="Cómo tocas">How you play</h3>
+          <div id="play-on" class="play-on" role="radiogroup" aria-label="How you play" data-es-aria-label="Cómo tocas">
+            <label><input type="radio" name="play-on" value="pad"> <span data-es="Un pad de práctica o una batería acústica">A practice pad or acoustic drums</span></label>
+            <label><input type="radio" name="play-on" value="keyboard"> <span data-es="El teclado del computador">The computer keyboard</span></label>
+            <label><input type="radio" name="play-on" value="kit"> <span data-es="Una batería electrónica">An electronic drum kit</span></label>
+          </div>
+          <p id="play-on-note" class="muted" aria-live="polite"></p>
+        </div>
+        <div>
+          <h3 data-es="Ajuste de tiempo">Timing offset</h3>
+          <p class="muted" data-es="Cancela el retraso constante entre tu golpe y lo que oye el computador. Calibra una vez para el teclado y otra para la batería.">Cancels the constant delay between your hit and what the computer hears. Calibrate once for the keyboard and once for the kit.</p>
+          <label><span data-es="Teclado">Keyboard</span> <input type="number" id="offset-kb" step="5" min="-250" max="250"> ms</label>
+          <label><span data-es="Batería">Kit</span> <input type="number" id="offset-kit" step="5" min="-250" max="250"> ms</label>
+          <div class="row"><button id="calibrate" data-es="Calibrar tocando">Calibrate by tapping</button></div>
+          <label><span data-es="Imagen">Picture</span> <input type="number" id="offset-pic" step="10" min="-500" max="500"> ms</label>
+          <p class="muted" data-es="Si la línea que avanza va adelante del sonido (pasa mucho en televisores), sube este número hasta que coincidan. Pruébalo con Escuchar.">If the moving line runs ahead of the sound (common on TVs), raise this until they match. Try it with Listen.</p>
+          <p id="cal-status" class="muted" aria-live="polite"></p>
+        </div>
+        <div>
+          <h3 data-es="Mapa de la batería">Kit layout</h3>
+          <div id="map-wizard"></div>
+        </div>
+        <div>
+          <h3 data-es="Sincronizar">Sync</h3>
+          <div id="sync-panel" class="sync-panel"></div>
+        </div>
+        <div>
+          <h3 data-es="Prueba de nivel">Placement</h3>
+          <p class="muted" data-es="Haz la prueba de nivel otra vez para cambiar dónde empiezas en cada ruta.">Run the placement again to reset where you start on each path.</p>
+          <div class="row"><button id="redo-placement" data-es="Repetir la prueba de nivel">Redo placement</button></div>
+        </div>
+        <div class="about">
+          <h3 data-es="Acerca de">About</h3>
+          <p><strong>Onbeat</strong> <span id="app-version" class="muted"></span></p>
+          <p class="credit"><span data-es="Hecho en Colombia con amor, por">Built in Colombia with love, by</span> <a id="author-link" target="_blank" rel="noopener">Eddie Bello</a>. <span class="muted"><span data-es="También en">Also on</span> <a id="author-linkedin" target="_blank" rel="noopener">LinkedIn</a> <span data-es="e">and</span> <a id="author-instagram" target="_blank" rel="noopener">Instagram</a>.</span></p>
+          <p><a id="support-link" target="_blank" rel="noopener" data-es="Apoya Onbeat">Support Onbeat</a> <span class="muted" data-es="(gratis, sin anuncios)">(free, no ads)</span></p>
+          <p id="other-version"></p>
+          <p class="muted" data-es="Privacidad: Onbeat no tiene cuentas, anuncios ni rastreo. Tu progreso se queda en este dispositivo, salvo que actives la sincronización: entonces el progreso de ese perfil se guarda en el servicio de Onbeat para tus otros dispositivos, sin nombres ni correos. Solo se conecta a YouTube cuando eliges un video para una canción.">Privacy: Onbeat has no accounts, ads or tracking. Your progress stays on this device unless you turn on sync: then that profile's progress is kept on Onbeat's sync service for your other devices, with no names or emails. It only connects to YouTube when you pick a video for a song.</p>
+          <p class="muted" data-es="La notación de batería se dibuja con VexFlow. Las partituras de canciones vienen de la comunidad de fans que las escribe; la app no trae ninguna.">Drum notation drawn with VexFlow. Song charts come from the community of fans who write them; the app ships with none.</p>
+        </div>
+      </div>
+      <p id="data-note" class="muted data-note"></p>
+    </div>
+  </section>
+
+  <div id="leavebar" class="leavebar" role="alert" hidden>
+    <span data-es="Tu pasada está en pausa. ¿Salir de esta pantalla y pararla?">Your run is paused. Leave this screen and stop it?</span>
+    <div class="row">
+      <button id="leave-go" data-es="Salir y parar la pasada">Leave and stop the run</button>
+      <button id="leave-stay" class="primary" data-es="Quedarme">Stay</button>
+    </div>
+  </div>
+
+  <div id="view-today" class="view" hidden></div>
+
+  <div id="view-practice" class="view layout" hidden>
+    <button id="list-btn" class="list-btn" aria-expanded="false" data-es="Ver ejercicios">Browse exercises</button>
+    <nav id="list" class="list" aria-label="Exercises" data-es-aria-label="Ejercicios"></nav>
+    <main>
+      <button id="list-toggle" class="quiet list-toggle" aria-controls="list"></button>
+      <section id="sessionbar" class="sessionbar" hidden></section>
+      <section id="banner" class="banner" hidden></section>
+      <div class="head">
+        <p id="crumb" class="crumb"></p>
+        <h2 id="title"></h2>
+        <p id="hint"></p>
+        <ul id="lesson" class="lesson" hidden></ul>
+        <p id="videos" class="videos" hidden></p>
+        <button id="lesson-toggle" class="linkish" aria-controls="lesson" hidden></button>
+      </div>
+      <div class="paper">
+        <div id="countin" class="countin" hidden></div>
+        <div id="loopbadge" class="loopbadge" hidden><span aria-live="polite"></span></div>
+        <div id="staff"></div>
+      </div>
+      <div class="controls">
+        <button id="start" class="primary" title="Enter key" data-es="Empezar" data-es-title="Tecla Enter">Start</button>
+        <button id="listen" data-es="Escuchar">Listen</button>
+        <button id="pause" title="Esc key" data-es="Pausa" data-es-title="Tecla Esc" hidden>Pause</button>
+        <div class="tempo">
+          <button id="slower10" class="tempo-big" aria-label="Slower by 10" data-es-aria-label="10 más lento">−10</button>
+          <button id="slower" aria-label="Slower by 5" data-es-aria-label="5 más lento">−</button>
+          <span><b id="bpm" role="button" tabindex="0" title="Click to type a tempo" aria-label="Tempo. Click to type one." data-es-title="Haz clic para escribir un tempo" data-es-aria-label="Tempo. Haz clic para escribir uno."></b> bpm</span>
+          <button id="faster" aria-label="Faster by 5" data-es-aria-label="5 más rápido">+</button>
+          <button id="faster10" class="tempo-big" aria-label="Faster by 10" data-es-aria-label="10 más rápido">+10</button>
+        </div>
+        <span id="rule" class="rule"></span>
+        <button id="aids-btn" class="quiet" aria-expanded="false" data-es="Ayudas de práctica">Practice aids</button>
+      </div>
+      <div id="aids-more" class="more-row" role="group" aria-label="More like this" data-es-aria-label="Más como este">
+        <button id="easier" title="One change that makes it easier" data-es="Más fácil" data-es-title="Un cambio que lo hace más fácil">Easier</button>
+        <button id="harder" title="One change that makes it harder" data-es="Más difícil" data-es-title="Un cambio que lo hace más difícil">Harder</button>
+        <button id="vary" title="A fresh combination at the same level" data-es="Nueva variación" data-es-title="Una combinación nueva del mismo nivel">New variation</button>
+        <span id="ladder-note" class="muted ladder-note"></span>
+      </div>
+      <div id="looppanel" class="looppanel" role="group" aria-label="Loop" data-es-aria-label="En bucle" hidden>
+        <p id="loop-note" class="muted ladder-note"></p>
+        <p id="loop-msg" class="loop-msg" aria-live="polite"></p>
+        <div class="loop-row">
+          <button id="loop-clean" data-es="Salió limpia">That was clean</button>
+          <button id="loop-notyet" data-es="Todavía no">Not yet</button>
+          <button id="loop-stop" class="primary" data-es="Parar">Stop</button>
+        </div>
+        <div class="loop-row">
+          <button id="loop-easier" data-es="Más fácil">Easier</button>
+          <button id="loop-harder" data-es="Más difícil">Harder</button>
+        </div>
+        <div class="loop-row loop-links">
+          <button id="loop-vary" class="loop-link" data-es="Nueva variación">New variation</button>
+          <button id="loop-drums" class="loop-link" aria-pressed="true" data-es="Batería: sí">Drums: on</button>
+          <button id="loop-easy" class="loop-link" data-es="Muy fácil, sigamos">Too easy, move on</button>
+        </div>
+      </div>
+      <div id="songmusic" class="songmusic row" hidden></div>
+      <p id="keyhint" class="keyhint muted" data-es="Teclas: Enter empieza y para. Esc pausa y continúa.">Keys: Enter starts and stops. Esc pauses and carries on.</p>
+      <div id="aids" class="aids" hidden>
+        <div class="aid-group" role="group" aria-labelledby="aids-click-label">
+          <span id="aids-click-label" class="aid-label" data-es="Clic">Click</span>
+          <div class="aid-row">
+            <select id="click" aria-label="Click" data-es-aria-label="Clic">
+              <option value="beat" data-es="en cada tiempo">on every beat</option>
+              <option value="sub" data-es="en cada subdivisión">on every note slot</option>
+              <option value="gap" data-es="callado un compás sí y otro no">silent every other bar</option>
+              <option value="off" data-es="apagado después del conteo">off after the count-in</option>
+            </select>
+            <label><input type="checkbox" id="count"> <span data-es="Mostrar el conteo">Show the count</span></label>
+          </div>
+        </div>
+        <div class="aid-group" role="group" aria-labelledby="aids-help-label">
+          <span id="aids-help-label" class="aid-label" data-es="Ayuda mientras aprendes">Help while learning</span>
+          <div class="aid-row">
+            <label><input type="checkbox" id="guide"> <span data-es="Tocar las notas conmigo">Play the notes with me</span></label>
+            <button id="wait" title="No clock: the line waits on each note until you hit it" data-es="Espérame" data-es-title="Sin reloj: la línea espera en cada nota hasta que la toques">Wait for me</button>
+            <button id="climb" title="Short runs back to back, 5 bpm faster after each clean one" data-es="Subida de tempo" data-es-title="Pasadas cortas seguidas, 5 bpm más rápido después de cada una limpia">Tempo climb</button>
+          </div>
+        </div>
+      </div>
+      <div class="below">
+        <div>
+          <div id="kitview" class="kitview"></div>
+          <p class="kithint muted" data-es="También en el teclado: S o L hi-hat abierto, C pedal del hi-hat, B segundo bombo. Mantén Shift para tocar suave.">Also on the keyboard: S or L open hi-hat, C hi-hat foot, B second kick. Hold Shift to play softly.</p>
+          <div id="ytplayer" class="ytplayer" hidden></div>
+          <div id="ytnudge" class="row ytnudge" hidden>
+            <span class="muted" data-es="La música contra el clic:">Music against the click:</span>
+            <button id="yt-later" title="The music is coming in late: start the video further in" data-es="La música va tarde" data-es-title="La música entra tarde: empieza el video más adelante">Music is late</button>
+            <button id="yt-earlier" title="The music is coming in early: start the video further back" data-es="La música va temprano" data-es-title="La música entra temprano: empieza el video más atrás">Music is early</button>
+            <span id="yt-offset" class="muted"></span>
+          </div>
+        </div>
+        <div class="side">
+          <div id="meter" class="meterbox"></div>
+          <div id="live" class="live" aria-live="polite"></div>
+          <section id="report" class="report" hidden></section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="view-songs" class="view" hidden></div>
+  <div id="view-progress" class="view" hidden></div>
+  <div id="celebrate" class="celebrate" role="status" hidden></div>
+  <div id="saver" class="saver" aria-hidden="true" hidden><div class="saver-logo"><span>Onbeat</span><small id="saver-hint"></small></div></div>
+</body>
+</html>

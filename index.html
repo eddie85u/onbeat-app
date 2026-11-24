@@ -1,0 +1,370 @@
+<!doctype html>
+<!-- Onbeat's landing page, in English, published at https://eddie85u.github.io/onbeat-app/ (tools/publish.sh).
+     The Spanish copy is es/index.html: change both together (app/src/site.test.ts checks they match).
+     The app itself lives at /onbeat-app/app/. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Old addresses of the app (bookmarks like #practice, and the sync service's QR links #link=XXXX-XXXX)
+    // go straight to the app, before anything is drawn.
+    (function () {
+      var h = location.hash;
+      if (/^#(today|practice|progress|songs|link=.+)$/i.test(h)) location.replace('/onbeat-app/app/' + h);
+    })();
+  </script>
+  <title>Learn the drums on a pad, keyboard or kit | Onbeat</title>
+  <meta name="description" content="Free drum practice app: read and play along on a practice pad, the computer keyboard or an electronic kit, on your TV, phone or computer. No ads, no accounts.">
+  <link rel="canonical" href="https://eddie85u.github.io/onbeat-app/">
+  <link rel="alternate" hreflang="en" href="https://eddie85u.github.io/onbeat-app/">
+  <link rel="alternate" hreflang="es" href="https://eddie85u.github.io/onbeat-app/es/">
+  <link rel="alternate" hreflang="x-default" href="https://eddie85u.github.io/onbeat-app/">
+  <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121514" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/onbeat-app/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="/onbeat-app/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/onbeat-app/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Onbeat">
+  <meta property="og:url" content="https://eddie85u.github.io/onbeat-app/">
+  <meta property="og:title" content="Learn the drums, one beat at a time">
+  <meta property="og:description" content="Free drum practice on a pad, the keyboard or an electronic kit, on your TV, phone or computer. In English and Spanish.">
+  <meta property="og:image" content="https://eddie85u.github.io/onbeat-app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Onbeat logo: learn the drums, one beat at a time">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/onbeat-app/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/onbeat-app/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://eddie85u.github.io/onbeat-app/#eddie",
+        "name": "Eddie Bello",
+        "url": "https://strategyandstack.com/",
+        "sameAs": ["https://www.linkedin.com/in/eddiebello/", "https://www.instagram.com/eddie85u/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://eddie85u.github.io/onbeat-app/#website",
+        "name": "Onbeat",
+        "alternateName": "Onbeat drum practice",
+        "url": "https://eddie85u.github.io/onbeat-app/",
+        "inLanguage": ["en", "es"],
+        "publisher": { "@id": "https://eddie85u.github.io/onbeat-app/#eddie" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://eddie85u.github.io/onbeat-app/#webpage",
+        "url": "https://eddie85u.github.io/onbeat-app/",
+        "name": "Learn the drums on a pad, keyboard or kit",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "https://eddie85u.github.io/onbeat-app/#website" },
+        "about": { "@id": "https://eddie85u.github.io/onbeat-app/#app" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://eddie85u.github.io/onbeat-app/#app",
+        "name": "Onbeat",
+        "description": "Drum practice: a staff with a moving line shows what to play, on a practice pad, the computer keyboard or an electronic kit. Lessons in ten paths, in English and Spanish.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "macOS (Apple silicon), web browser",
+        "url": "https://eddie85u.github.io/onbeat-app/app/",
+        "downloadUrl": "https://github.com/eddie85u/onbeat-app/releases/latest",
+        "image": "https://eddie85u.github.io/onbeat-app/og.png",
+        "inLanguage": ["en", "es"],
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://eddie85u.github.io/onbeat-app/#eddie" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://eddie85u.github.io/onbeat-app/#faq",
+        "inLanguage": "en",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is Onbeat free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Onbeat is free, with no ads and no paid version. Donations are voluntary and any amount is welcome; a donation of US$10 (40,000 pesos) or more unlocks one cloud profile, kept in step on up to 3 devices." } },
+          { "@type": "Question", "name": "Do I need an electronic drum kit?", "acceptedAnswer": { "@type": "Answer", "text": "No. You can practise on a practice pad, on acoustic drums or on the computer keyboard. An electronic kit plugged in with a USB cable adds a check of every hit." } },
+          { "@type": "Question", "name": "Can Onbeat hear me on a practice pad?", "acceptedAnswer": { "@type": "Answer", "text": "No. On a pad or acoustic drums Onbeat cannot hear you, so it plays the exercise with you and you say whether each run was clean. With the keyboard or an electronic kit it checks every hit: on time, the right drum, loud or soft." } },
+          { "@type": "Question", "name": "Which browser do I need?", "acceptedAnswer": { "@type": "Answer", "text": "On a computer, use Google Chrome on Mac or Windows; it is the browser that can talk to an electronic kit. On a practice pad, the browser on a phone, tablet or TV works too." } },
+          { "@type": "Question", "name": "Does it work on my TV?", "acceptedAnswer": { "@type": "Answer", "text": "If your TV has a web browser, yes, for practising on a pad. Onbeat has a layout for big screens, a screensaver when nothing is playing, and a Picture setting in case the moving line runs ahead of the sound, which is common on TVs." } },
+          { "@type": "Question", "name": "Where are the songs?", "acceptedAnswer": { "@type": "Answer", "text": "Playing along to songs is in the Mac app. Onbeat comes with no songs: you add a song's drum chart, made by fans for Clone Hero or YARG, and its audio if you have it." } },
+          { "@type": "Question", "name": "Is Onbeat in Spanish?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The app and this page are in English and Spanish (Colombia). Switch with EN | ES at the top at any time." } },
+          { "@type": "Question", "name": "Where is my progress saved?", "acceptedAnswer": { "@type": "Answer", "text": "On your device: in the browser for the web version, and in the app on the Mac. Progress, Backup saves it to a file you can move to another computer. Supporters can unlock a cloud profile instead, saved online and kept in step on up to 3 devices." } },
+          { "@type": "Question", "name": "Is there a Windows app?", "acceptedAnswer": { "@type": "Answer", "text": "Not yet; it is on the plan. Until then, the web version works in Chrome on Windows." } },
+          { "@type": "Question", "name": "Who makes Onbeat?", "acceptedAnswer": { "@type": "Answer", "text": "Eddie Bello, in Colombia, a beginner drummer too." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="/onbeat-app/">Onbeat</a>
+      <nav class="nav" aria-label="Main">
+        <a class="btn dl" href="#get">Download</a>
+        <a class="btn primary" href="/onbeat-app/app/">Open<span class="long">&nbsp;Onbeat on the web</span></a>
+        <span class="lang" role="group" aria-label="Language">
+          <span aria-current="true" lang="en">EN</span>
+          <a href="/onbeat-app/es/" lang="es" hreflang="es" title="Español (Colombia)">ES</a>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <h1>Learn the drums, one beat at a time</h1>
+          <p class="lead">Onbeat shows the music with a moving line, keeps time, and plays the drums with you. Practise on a practice pad, the computer keyboard or an electronic kit, on your TV, phone or computer.</p>
+          <div class="cta">
+            <a class="btn primary big" href="/onbeat-app/app/">Open Onbeat on the web</a>
+            <a class="btn big" href="#get">Download for Mac</a>
+          </div>
+          <ul class="facts">
+            <li>Free, no ads</li>
+            <li>No account</li>
+            <li>English and Spanish</li>
+          </ul>
+        </div>
+        <!-- REEL 1 goes here: about 15 seconds of someone playing a practice pad in front of a TV while Onbeat loops.
+             Until it exists, this is a real screenshot of the app on a TV-sized screen (tools/make-shots.sh). -->
+        <figure class="screen tv" data-reel="pad-on-tv">
+          <div class="glass">
+            <img src="/onbeat-app/img/tv-960.webp" srcset="/onbeat-app/img/tv-960.webp 960w, /onbeat-app/img/tv-1600.webp 1600w" sizes="(min-width: 900px) 55vw, 100vw" width="1600" height="900" fetchpriority="high" alt="Onbeat on a TV-sized screen: a rock beat written across the whole width, a moving line on the third beat, and the loop buttons That was clean, Not yet and Stop.">
+          </div>
+          <div class="stand"></div>
+          <figcaption>On a TV: the music across the whole screen, big enough to read from the drum stool.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="play" class="band">
+      <div class="wrap">
+        <div class="intro">
+          <h2>Play on what you have</h2>
+          <p>No drum kit yet? That is fine. Onbeat works with three things, and you can change at any time in Settings.</p>
+        </div>
+        <ul class="cards">
+          <li>
+            <span class="tag">Practice pad</span>
+            <h3>A pad or acoustic drums</h3>
+            <p class="muted">Press <b>Listen</b> and the exercise plays over and over, drums and all, while you play along. Say whether it was clean, and the tempo goes up after three clean runs.</p>
+          </li>
+          <li>
+            <span class="tag">Keyboard</span>
+            <h3>The computer keyboard</h3>
+            <p class="muted">The keys are a drum kit: Space is the kick, F and J the snare. Every hit is checked for timing, so you can start reading before you own anything.</p>
+          </li>
+          <li>
+            <span class="tag">Electronic kit</span>
+            <h3>An electronic drum kit</h3>
+            <p class="muted">Plug the drum module into the computer with a USB cable. Onbeat finds it and checks every hit: on time, the right drum, loud or soft.</p>
+          </li>
+        </ul>
+        <!-- REEL 2 can replace this screenshot: the loop on a pad, with "That was clean" moving the tempo up. -->
+        <figure class="screen" data-reel="pad-loop">
+          <div class="glass">
+            <img src="/onbeat-app/img/pad-loop-720.webp" srcset="/onbeat-app/img/pad-loop-720.webp 720w, /onbeat-app/img/pad-loop-1280.webp 1280w" sizes="(min-width: 1160px) 1080px, 100vw" width="1280" height="652" loading="lazy" alt="The pad loop on a computer: First rock beat at 70 bpm, loop 1, with the buttons That was clean, Not yet, Stop, Easier and Harder.">
+          </div>
+          <figcaption>On a pad, Listen loops the exercise. "That was clean" or "Not yet" after each pass.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="lessons">
+      <div class="wrap split">
+        <div>
+          <h2>Lessons that grow with you</h2>
+          <p>Short lessons in ten paths, from your first quarter notes to double kick and odd time. Each day, <b>Today</b> plans a session of 10, 20 or 45 minutes: a warm-up, something new, and a review.</p>
+          <ul class="paths" aria-label="The ten paths">
+            <li>Reading</li><li>Time and rhythm</li><li>Hands and rudiments</li><li>Grooves</li><li>Fills</li>
+            <li>Dynamics and ghost notes</li><li>Hi-hat</li><li>Independence</li><li>Double kick</li><li>Odd time</li>
+          </ul>
+          <div class="note">
+            <h3>Easier, Harder</h3>
+            <p>On a beat that is too hard, <b>Easier</b> takes one thing out. When it feels easy, <b>Harder</b> adds one thing, like a kick on the "and" of 3. One small step at a time.</p>
+          </div>
+        </div>
+        <div class="pair">
+          <figure class="screen">
+            <div class="glass">
+              <img src="/onbeat-app/img/harder-720.webp" srcset="/onbeat-app/img/harder-720.webp 720w, /onbeat-app/img/harder-1280.webp 1280w" sizes="(min-width: 900px) 540px, 100vw" width="1280" height="652" loading="lazy" alt="First rock beat, Harder 1: the note under the music reads Harder 1 of 5, a kick on the and of 3.">
+            </div>
+            <figcaption>One press on Harder: "a kick on the 'and' of 3".</figcaption>
+          </figure>
+          <figure class="screen">
+            <div class="glass">
+              <img src="/onbeat-app/img/map-720.webp" srcset="/onbeat-app/img/map-720.webp 720w, /onbeat-app/img/map-1280.webp 1280w" sizes="(min-width: 900px) 540px, 100vw" width="1280" height="906" loading="lazy" alt="Your map in Progress: one line per path, Reading, Time and rhythm, Hands and rudiments, Grooves, Fills and more, with a stop for each level.">
+            </div>
+            <figcaption>Progress shows your map: each line is a path, each stop a level.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens" class="band">
+      <div class="wrap split flip">
+        <div>
+          <h2>TV, phone or computer</h2>
+          <p>Put Onbeat on the TV and practise in the living room, or prop the phone on a music stand. The screen is laid out for each size.</p>
+          <ul class="ticks">
+            <li>On a big screen the music fills the width, with the kit picture and the buttons below it.</li>
+            <li>A screensaver comes on after three minutes with nothing playing.</li>
+            <li>If the moving line runs ahead of the sound, as it often does on a TV, a Picture setting lines them up.</li>
+            <li>Several people can share one device: each profile keeps its own progress, and Onbeat asks "Who's playing?" when it opens.</li>
+          </ul>
+        </div>
+        <!-- REEL 3 can go here: linking a phone to the TV with the QR code in Settings > Sync. -->
+        <div class="phones">
+          <figure class="screen phone">
+            <div class="glass"><img src="/onbeat-app/img/phone-today-360.webp" srcset="/onbeat-app/img/phone-today-360.webp 360w, /onbeat-app/img/phone-today-720.webp 720w" sizes="(min-width: 600px) 250px, 45vw" width="360" height="780" loading="lazy" alt="Today on a phone: a 20-minute session with warm-ups and new exercises, and a Start session button."></div>
+          </figure>
+          <figure class="screen phone">
+            <div class="glass"><img src="/onbeat-app/img/phone-loop-360.webp" srcset="/onbeat-app/img/phone-loop-360.webp 360w, /onbeat-app/img/phone-loop-720.webp 720w" sizes="(min-width: 600px) 250px, 45vw" width="360" height="780" loading="lazy" alt="The pad loop on a phone: the rock beat, the tempo buttons, That was clean, Not yet, Stop, Easier and Harder, and the kit picture."></div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="mac-songs">
+      <div class="wrap split">
+        <div>
+          <h2>Songs, in the Mac app</h2>
+          <p>In the Mac app you can play along to real songs, the whole song or one part at a time, with the same moving line and the same checks.</p>
+          <p class="muted">Onbeat comes with no songs. A song is a folder with a drum chart written by fans (charts made for Clone Hero and YARG work) and the song's audio if you have it. Drag the folder onto the Songs screen.</p>
+        </div>
+        <div>
+          <h2>Free, and private</h2>
+          <ul class="ticks">
+            <li>Free, with no ads and no paid version.</li>
+            <li>No accounts and no tracking. Your progress stays on your device.</li>
+            <li>Onbeat loads everything from this site. It contacts the sync service only if you turn sync on, and YouTube only when you pick a video for a song in the Mac app.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sync" class="band">
+      <div class="wrap split">
+        <div>
+          <h2>Your profile in the cloud</h2>
+          <p>Practise on the TV tonight and carry on from the phone tomorrow. Donations are voluntary and any amount is welcome. Donate <b>US$10 (40,000 pesos) or more</b> and you get a code that unlocks one cloud profile: your progress and settings are saved online and kept in step on up to 3 devices (TV, phone, Mac).</p>
+          <p class="muted">To get the code, write to <a href="mailto:eddie@strategyandstack.com">eddie@strategyandstack.com</a> with your transfer details. Type it in Settings &gt; Sync, then link the other devices with a QR code or a short link code. Only that profile's progress and settings are kept online, with no names or emails. Without a code, everything still works; progress just stays on each device.</p>
+          <p><a class="btn" href="/onbeat-app/support.html">Support Onbeat</a></p>
+        </div>
+        <div class="note">
+          <h3>Why a donation?</h3>
+          <p>Onbeat is free and made by one person, in Colombia. Keeping a profile online and in step between devices needs a service on the internet, so the cloud profile is a thank-you to the people who support the app. Any amount helps, and so does telling a friend who is learning the drums.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="get">
+      <div class="wrap">
+        <div class="intro">
+          <h2>Get Onbeat</h2>
+          <p>Start in the browser now, nothing to install. The Mac app adds songs and saves a backup by itself every day you practise.</p>
+        </div>
+        <div class="get">
+          <div class="main">
+            <h3>On the web</h3>
+            <p class="muted">In Google Chrome on a Mac or Windows computer. For a practice pad, the browser on a phone, tablet or TV works too. Everything except songs.</p>
+            <a class="btn primary" href="/onbeat-app/app/">Open Onbeat on the web</a>
+          </div>
+          <div>
+            <h3>Mac</h3>
+            <p class="muted">For Macs with Apple silicon (M1 or newer). Includes songs.</p>
+            <ol>
+              <li>Download <b>Onbeat-mac.zip</b>, open it, and drag Onbeat into Applications.</li>
+              <li>Open it. The first time, macOS says it cannot check the app, because it is not from the App Store. Click <b>Done</b>.</li>
+              <li>In System Settings &gt; Privacy &amp; Security, click <b>Open Anyway</b> next to the message about Onbeat, and confirm.</li>
+            </ol>
+            <a class="btn" href="https://github.com/eddie85u/onbeat-app/releases/latest/download/Onbeat-mac.zip">Download for Mac</a>
+            <p class="small muted" style="margin-top:10px">Or see <a href="https://github.com/eddie85u/onbeat-app/releases/latest">all downloads and what's new</a>.</p>
+          </div>
+          <div>
+            <h3>Windows</h3>
+            <p class="muted">A Windows app is on the way. Until then, the web version works in Chrome on Windows, electronic kit included.</p>
+            <a class="btn" href="/onbeat-app/app/">Use the web version</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="band">
+      <div class="wrap faq">
+        <h2>Questions</h2>
+        <details>
+          <summary>Is Onbeat free?</summary>
+          <div><p>Yes. Onbeat is free, with no ads and no paid version. Donations are voluntary and any amount is welcome; a donation of US$10 (40,000 pesos) or more unlocks one cloud profile, kept in step on up to 3 devices.</p></div>
+        </details>
+        <details>
+          <summary>Do I need an electronic drum kit?</summary>
+          <div><p>No. You can practise on a practice pad, on acoustic drums or on the computer keyboard. An electronic kit plugged in with a USB cable adds a check of every hit.</p></div>
+        </details>
+        <details>
+          <summary>Can Onbeat hear me on a practice pad?</summary>
+          <div><p>No. On a pad or acoustic drums Onbeat cannot hear you, so it plays the exercise with you and you say whether each run was clean. With the keyboard or an electronic kit it checks every hit: on time, the right drum, loud or soft.</p></div>
+        </details>
+        <details>
+          <summary>Which browser do I need?</summary>
+          <div><p>On a computer, use Google Chrome on Mac or Windows; it is the browser that can talk to an electronic kit. On a practice pad, the browser on a phone, tablet or TV works too.</p></div>
+        </details>
+        <details>
+          <summary>Does it work on my TV?</summary>
+          <div><p>If your TV has a web browser, yes, for practising on a pad. Onbeat has a layout for big screens, a screensaver when nothing is playing, and a Picture setting in case the moving line runs ahead of the sound, which is common on TVs.</p></div>
+        </details>
+        <details>
+          <summary>Where are the songs?</summary>
+          <div><p>Playing along to songs is in the Mac app. Onbeat comes with no songs: you add a song's drum chart, made by fans for Clone Hero or YARG, and its audio if you have it.</p></div>
+        </details>
+        <details>
+          <summary>Is Onbeat in Spanish?</summary>
+          <div><p>Yes. The app and this page are in English and Spanish (Colombia). Switch with EN | ES at the top at any time.</p></div>
+        </details>
+        <details>
+          <summary>Where is my progress saved?</summary>
+          <div><p>On your device: in the browser for the web version, and in the app on the Mac. Progress, Backup saves it to a file you can move to another computer. Supporters can unlock a cloud profile instead, saved online and kept in step on up to 3 devices.</p></div>
+        </details>
+        <details>
+          <summary>Is there a Windows app?</summary>
+          <div><p>Not yet; it is on the plan. Until then, the web version works in Chrome on Windows.</p></div>
+        </details>
+        <details>
+          <summary>Who makes Onbeat?</summary>
+          <div><p>Eddie Bello, in Colombia, a beginner drummer too.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="end">
+      <div class="wrap">
+        <h2>Ready when you are</h2>
+        <p class="muted">Grab your sticks: the first lesson is the snare and the quarter note.</p>
+        <div class="cta">
+          <a class="btn primary big" href="/onbeat-app/app/">Open Onbeat on the web</a>
+          <a class="btn big" href="#get">Download for Mac</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Built in Colombia with love, by <a href="https://strategyandstack.com/">Eddie Bello</a>. Also on <a href="https://www.linkedin.com/in/eddiebello/">LinkedIn</a> and <a href="https://www.instagram.com/eddie85u/">Instagram</a>.</p>
+      <p><a href="/onbeat-app/support.html">Support Onbeat</a> · <a href="/onbeat-app/app/">Open the app</a> · <a href="https://github.com/eddie85u/onbeat-app/releases/latest">Downloads</a> · <a href="/onbeat-app/es/" lang="es" hreflang="es">Español</a></p>
+      <p class="small">Privacy: no accounts, ads or tracking, and no cookies. Your progress stays on your device unless you turn on sync for a profile; then that profile's progress, with no names or emails, is kept on Onbeat's sync service for your other devices. Drum notation drawn with VexFlow.</p>
+    </div>
+  </footer>
+</body>
+</html>
